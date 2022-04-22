@@ -21,6 +21,7 @@
 package org.openmuc.framework.driver.opcua;
 
 import static org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned.uint;
+import static org.eclipse.milo.opcua.stack.core.util.ConversionUtil.toList;
 import static org.openmuc.framework.config.option.annotation.OptionType.ADDRESS;
 import static org.openmuc.framework.config.option.annotation.OptionType.SETTING;
 
@@ -35,6 +36,7 @@ import java.util.stream.Collectors;
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
 import org.eclipse.milo.opcua.sdk.client.api.config.OpcUaClientConfigBuilder;
 import org.eclipse.milo.opcua.sdk.client.api.identity.AnonymousProvider;
+import org.eclipse.milo.opcua.sdk.client.api.identity.IdentityProvider;
 import org.eclipse.milo.opcua.sdk.client.model.nodes.objects.ServerTypeNode;
 import org.eclipse.milo.opcua.stack.client.DiscoveryClient;
 import org.eclipse.milo.opcua.stack.core.Identifiers;
@@ -44,8 +46,15 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
 import org.eclipse.milo.opcua.stack.core.types.builtin.LocalizedText;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.eclipse.milo.opcua.stack.core.types.builtin.StatusCode;
+import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned;
+import org.eclipse.milo.opcua.stack.core.types.enumerated.BrowseDirection;
+import org.eclipse.milo.opcua.stack.core.types.enumerated.BrowseResultMask;
+import org.eclipse.milo.opcua.stack.core.types.enumerated.NodeClass;
 import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
+import org.eclipse.milo.opcua.stack.core.types.structured.BrowseDescription;
+import org.eclipse.milo.opcua.stack.core.types.structured.BrowseResult;
 import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
+import org.eclipse.milo.opcua.stack.core.types.structured.ReferenceDescription;
 import org.eclipse.milo.opcua.stack.core.util.EndpointUtil;
 import org.openmuc.framework.config.option.annotation.Option;
 import org.openmuc.framework.data.DoubleValue;
@@ -105,9 +114,13 @@ public class OpcConnection extends DriverDevice {
                 address = "opc.tcp://" + address;
             }
             else {
-                host = address.split("//|:")[1];
-                port = Integer.parseInt(address.split("//|:")[2]);
+                host = address.split("//|:")[2];
+                String[] omg = address.split("//|:|/");
+                port = Integer.parseInt(address.split("//|:|/")[3]);
             }
+//            this.client = OpcUaClient.create(this.address, endpoints -> endpoints.stream().findFirst(), configBuilder -> configBuilder.setApplicationName(LocalizedText.english("OpenMUC OPC UA Client")).setApplicationUri("urn:openmuc:client").setCertificate(loader.getClientCertificate()).setKeyPair(loader.getClientKeyPair()).setIdentityProvider((IdentityProvider)new AnonymousProvider()).setRequestTimeout(Unsigned.uint(5000)).build());
+//            this.client.connect().get();
+
             List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints(address).get();
 
             EndpointDescription endpoint = endpoints.stream().filter(e -> true).findFirst()
@@ -130,6 +143,14 @@ public class OpcConnection extends DriverDevice {
                     ServerTypeNode.class
                 ).get();
 
+            String ns = Arrays.toString(serverNode.getNamespaceArray().get());
+
+            logger.info("Namespace: {}", ns);
+
+//            NodeId nodeId = new NodeId(3, "\"Tag_1\"");
+//            DataValue data = client.readValue(0.0, TimestampsToReturn.Neither, nodeId).get();
+//            logger.info("Value: {}", data.getValue().toString());
+//            browseNode("", client, Identifiers.RootFolder);
             if (namespaceUri != null && !namespaceUri.isEmpty()) {
                 try {
                     namespaceIndex = Integer.parseInt(namespaceUri);
@@ -198,4 +219,30 @@ public class OpcConnection extends DriverDevice {
         }
     }
 
+    private void browseNode(String indent, OpcUaClient client, NodeId browseRoot) {
+        BrowseDescription browse = new BrowseDescription(
+                browseRoot,
+                BrowseDirection.Forward,
+                Identifiers.References,
+                true,
+                uint(NodeClass.Object.getValue() | NodeClass.Variable.getValue()),
+                uint(BrowseResultMask.All.getValue())
+        );
+
+        try {
+            BrowseResult browseResult = client.browse(browse).get();
+
+            List<ReferenceDescription> references = toList(browseResult.getReferences());
+
+            for (ReferenceDescription rd : references) {
+                logger.info("{} Node={}", indent, rd.getBrowseName().getName());
+
+                // recursively browse to children
+                rd.getNodeId().local(client.getNamespaceTable())
+                        .ifPresent(nodeId -> browseNode(indent + "  ", client, nodeId));
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            logger.error("Browsing nodeId={} failed: {}", browseRoot, e.getMessage(), e);
+        }
+    }
 }

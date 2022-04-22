@@ -35,7 +35,7 @@ jar {
                               '!org.bouncycastle.*,' +
                               '!org.apache.log*,' +
                               '!org.apache.commons.log*,' +
-                              '!com.google.protobuf.nano.*,' +
+                              '!com.google.protobuf.nano*,' +
                               '!com.oracle.svm.*,' +
                               '!com.digitalpetri.*,' +
                               '!org.conscrypt.*,' +

@@ -44,12 +44,12 @@ configure(subprojects) {
     apply plugin: "maven-publish"
 
     group = cfgGroup
-    sourceCompatibility = "1.8"
-    targetCompatibility = "1.8"
+    sourceCompatibility = "11"
+    targetCompatibility = "11"
 
     if (!project.properties.containsKey('cfgJavaVersion')) {
         project.ext {
-            cfgJavaVersion = '1.11'
+            cfgJavaVersion = '11'
         }
     }
     repositories {

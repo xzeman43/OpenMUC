@@ -1,4 +1,4 @@
-include "openmuc-app-simpledemo", "openmuc-core-api", "openmuc-core-datamanager", "openmuc-core-spi", "openmuc-datalogger", "openmuc-datalogger-amqp", "openmuc-datalogger-ascii", "openmuc-datalogger-mqtt", "openmuc-datalogger-slotsdb", "openmuc-datalogger-sql", "openmuc-driver", "openmuc-driver-aggregator", "openmuc-driver-amqp", "openmuc-driver-csv", "openmuc-driver-derivator", "openmuc-driver-dlms", "openmuc-driver-ehz", "openmuc-driver-iec60870", "openmuc-driver-iec61850", "openmuc-driver-iec62056p21", "openmuc-driver-knx", "openmuc-driver-mbus", "openmuc-driver-modbus", "openmuc-driver-mqtt", "openmuc-driver-opcua", "openmuc-driver-rest", "openmuc-driver-rpi-gpio", "openmuc-driver-rpi-w1", "openmuc-driver-snmp", "openmuc-driver-sql", "openmuc-driver-wmbus", "openmuc-lib-amqp", "openmuc-lib-persistence", "openmuc-lib-mqtt", "openmuc-lib-osgi", "openmuc-lib-parser-openmuc", "openmuc-lib-parser-flotteladen", "openmuc-lib-rest", "openmuc-lib-ssl", "openmuc-server", "openmuc-server-modbus", "openmuc-server-opcua", "openmuc-server-restws", "openmuc-webui-base", "openmuc-webui-channelaccesstool", "openmuc-webui-channelconfigurator", "openmuc-webui-dataexporter", "openmuc-webui-dataplotter", "openmuc-webui-mediaviewer", "openmuc-webui-simpledemovisualisation", "openmuc-webui-spi", "openmuc-webui-userconfigurator"
+include "openmuc-app-simpledemo", "openmuc-core-api", "openmuc-core-datamanager", "openmuc-core-spi", "openmuc-datalogger", "openmuc-datalogger-amqp", "openmuc-datalogger-ascii", "openmuc-datalogger-mqtt", "openmuc-datalogger-slotsdb", "openmuc-datalogger-sql", "openmuc-driver", "openmuc-driver-aggregator", "openmuc-driver-amqp", "openmuc-driver-csv", "openmuc-driver-derivator", "openmuc-driver-dlms", "openmuc-driver-ehz", "openmuc-driver-iec60870", "openmuc-driver-iec61850", "openmuc-driver-iec62056p21", "openmuc-driver-knx", "openmuc-driver-mbus", "openmuc-driver-modbus", "openmuc-driver-mqtt", "openmuc-driver-opcua","openmuc-driver-s7", "openmuc-driver-rest", "openmuc-driver-rpi-gpio", "openmuc-driver-rpi-w1", "openmuc-driver-snmp", "openmuc-driver-sql", "openmuc-driver-wmbus", "openmuc-lib-amqp", "openmuc-lib-persistence", "openmuc-lib-mqtt", "openmuc-lib-osgi", "openmuc-lib-parser-openmuc", "openmuc-lib-parser-flotteladen", "openmuc-lib-rest", "openmuc-lib-ssl", "openmuc-server", "openmuc-server-modbus", "openmuc-server-opcua", "openmuc-server-restws", "openmuc-webui-base", "openmuc-webui-channelaccesstool", "openmuc-webui-channelconfigurator", "openmuc-webui-dataexporter", "openmuc-webui-dataplotter", "openmuc-webui-mediaviewer", "openmuc-webui-simpledemovisualisation", "openmuc-webui-spi", "openmuc-webui-userconfigurator", "openmuc-webui-energymap","openmuc-webui-loop","openmuc-webui-brewery","openmuc-webui-wastewater"
 
 project(":openmuc-app-simpledemo").projectDir = file("projects/app/simpledemo")
 project(":openmuc-core-api").projectDir = file("projects/core/api")
@@ -24,6 +24,7 @@ project(":openmuc-driver-knx").projectDir = file("projects/driver/knx")
 project(":openmuc-driver-mbus").projectDir = file("projects/driver/mbus")
 project(":openmuc-driver-modbus").projectDir = file("projects/driver/modbus")
 project(":openmuc-driver-opcua").projectDir = file("projects/driver/opcua")
+project(":openmuc-driver-s7").projectDir = file("projects/driver/s7")
 project(":openmuc-driver-mqtt").projectDir = file("projects/driver/mqtt")
 project(":openmuc-driver-rest").projectDir = file("projects/driver/rest")
 project(":openmuc-driver-rpi-gpio").projectDir = file("projects/driver/rpi-gpio")
@@ -52,3 +53,7 @@ project(":openmuc-webui-mediaviewer").projectDir = file("projects/webui/mediavie
 project(":openmuc-webui-simpledemovisualisation").projectDir = file("projects/webui/simpledemovisualisation")
 project(":openmuc-webui-spi").projectDir = file("projects/webui/spi")
 project(":openmuc-webui-userconfigurator").projectDir = file("projects/webui/userconfigurator")
+project(":openmuc-webui-energymap").projectDir = file("projects/webui/energymap")
+project(":openmuc-webui-loop").projectDir = file("projects/webui/loop")
+project(":openmuc-webui-brewery").projectDir = file("projects/webui/brewery")
+project(":openmuc-webui-wastewater").projectDir = file("projects/webui/wastewater")

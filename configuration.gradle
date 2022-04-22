@@ -1,5 +1,5 @@
 project.ext {
-    cfgVersion = "0.20.3"
+    cfgVersion = "0.20.2"
 
     cfgGroup = "org.openmuc.framework"
 
@@ -45,6 +45,7 @@ project.ext {
                 it.getPath() == ":openmuc-driver-modbus" ||
                 it.getPath() == ":openmuc-driver-mqtt" ||
                 it.getPath() == ":openmuc-driver-opcua" ||
+                it.getPath() == ":openmuc-driver-s7" ||
                 it.getPath() == ":openmuc-driver-rest" ||
                 it.getPath() == ":openmuc-driver-rpi-gpio" ||
                 it.getPath() == ":openmuc-driver-rpi-w1" ||
@@ -71,6 +72,10 @@ project.ext {
                 it.getPath() == ":openmuc-webui-mediaviewer" ||
                 it.getPath() == ":openmuc-webui-simpledemovisualisation" ||
                 it.getPath() == ":openmuc-webui-spi" ||
+                it.getPath() == ":openmuc-webui-loop" ||
+                it.getPath() == ":openmuc-webui-brewery" ||
+                it.getPath() == ":openmuc-webui-energymap" ||
+                it.getPath() == ":openmuc-webui-wastewater" ||
                 it.getPath() == ":openmuc-webui-userconfigurator"
     }
 
