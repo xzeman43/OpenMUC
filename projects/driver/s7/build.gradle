@@ -1,0 +1,36 @@
+def projectName = "OpenMUC Driver - S7"
+def projectDescription = "S7 driver for the OpenMUC framework."
+
+configurations.create('embed')
+
+def moka7version = '3.3.0'
+def jrxtxversion = '1.0.1'
+
+dependencies {
+    implementation project(':openmuc-driver')
+
+    testImplementation 'org.mockito:mockito-core:2.25.0'
+    testImplementation 'org.powermock:powermock-api-mockito2:2.0.2'
+    testImplementation 'org.powermock:powermock-module-junit4:2.0.2'
+}
+
+jar {
+    bnd('Bundle-Name': projectName,
+        'Bundle-ClassPath': '',
+        'Import-Package': '!org.openmuc.jmbus*,*' + jarDefaultImportPackageVersion)
+
+    into('lib') {
+        from configurations.embed
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            pom {
+                name = projectName
+                description projectDescription
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+def projectName = "Power Map"
+def projectDescription = "OpenMUC WebUI - Power Map"
+
+dependencies {
+    implementation project(':openmuc-core-api')
+    implementation project(':openmuc-webui-spi')
+}
+
+jar {
+    bnd('Bundle-Name': projectName)
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            pom {
+                name = projectName
+                description = projectDescription
+            }
+        }
+    }
+}

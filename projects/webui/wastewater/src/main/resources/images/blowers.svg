@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generováno Microsoft Visiem, export SVG blowers.svg Page-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="12.6309in" height="9.10172in"
+		viewBox="0 0 909.422 655.324" xml:space="preserve" color-interpolation-filters="sRGB" class="st12">
+	<v:documentProperties v:langID="1029" v:metric="true" v:viewMarkup="false">
+		<v:userDefs>
+			<v:ud v:nameU="msvNoAutoConnect" v:val="VT0(1):26"/>
+		</v:userDefs>
+	</v:documentProperties>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#000000;stroke:none;stroke-linecap:butt;stroke-width:0.75}
+		.st2 {fill:#9c9c9c;stroke:none;stroke-linecap:butt;stroke-width:1}
+		.st3 {fill:#ffffff;stroke:#303030;stroke-linecap:butt;stroke-width:0.749785}
+		.st4 {fill:#4c4c4c;stroke:#303030;stroke-linecap:butt;stroke-width:0.749785}
+		.st5 {fill:#ffffff;stroke:#303030;stroke-linecap:butt;stroke-width:3.74892}
+		.st6 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st7 {fill:#000000;font-family:Arial;font-size:2.50001em;font-weight:bold}
+		.st8 {fill:#000000;font-family:Arial;font-size:2.50001em}
+		.st9 {fill:#ffffff;font-family:Arial;font-size:1.99999em;font-weight:bold}
+		.st10 {fill:#ff0000;stroke:#303030;stroke-linecap:butt;stroke-width:0.749784}
+		.st11 {fill:#000000;font-family:Arial;font-size:4.99999em;font-weight:bold}
+		.st12 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<title>Stránka-1</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="9"
+				v:shadowOffsetY="-9"/>
+		<g id="group307-1" transform="translate(18,-18)" v:mID="307" v:groupContext="group">
+			<title>List.307</title>
+			<g id="shape33-2" v:mID="33" v:groupContext="shape">
+				<title>path250</title>
+				<path d="M0 37.5 L871.92 37.5 L871.92 655.32 L0 655.32 L0 37.5 Z" class="st1"/>
+			</g>
+			<g id="shape34-4" v:mID="34" v:groupContext="shape" transform="translate(1.125,-1.875)">
+				<title>path259</title>
+				<path d="M0 40.5 L869.75 40.5 L869.75 655.32 L0 655.32 L0 40.5 Z" class="st2"/>
+			</g>
+			<g id="shape62-6" v:mID="62" v:groupContext="shape" transform="translate(212.64,-475.254)">
+				<title>HMI_Ctverec_Dmychadlo_1</title>
+				<path d="M0 617.83 L44.99 617.83 L44.99 655.32 L0 655.32 L0 617.83 Z" class="st3"/>
+			</g>
+			<g id="shape64-8" v:mID="64" v:groupContext="shape" transform="translate(612.199,-102.348)">
+				<title>HMI_Tlac_Uvod</title>
+				<path d="M0 595.34 L224.94 595.34 L224.94 655.32 L0 655.32 L0 595.34 Z" class="st4"/>
+			</g>
+			<g id="shape81-10" v:mID="81" v:groupContext="shape" transform="translate(612.199,-27.3672)">
+				<title>path359</title>
+				<path d="M0 595.34 L224.94 595.34 L224.94 655.32 L0 655.32 L0 595.34 Z" class="st4"/>
+			</g>
+			<g id="shape82-12" v:mID="82" v:groupContext="shape" transform="translate(612.199,-27.3672)">
+				<title>HMI_Tlac_Zpet_Dmychadla</title>
+				<path d="M0 595.34 L224.94 595.34 L224.94 655.32 L0 655.32 L0 595.34 Z" class="st4"/>
+			</g>
+			<g id="shape154-14" v:mID="154" v:groupContext="shape" transform="translate(298.73,-379.766)">
+				<title>HMI_Text_Cykly</title>
+				<path d="M0 625.33 L112.46 625.33 L112.46 655.32 L0 655.32 L0 625.33 Z" class="st5"/>
+			</g>
+			<g id="shape260-16" v:mID="260" v:groupContext="shape" transform="translate(298.73,-259.801)">
+				<title>HMI_Text_DobaSedi_SBR</title>
+				<path d="M0 625.33 L112.46 625.33 L112.46 655.32 L0 655.32 L0 625.33 Z" class="st5"/>
+			</g>
+			<g id="shape266-18" v:mID="266" v:groupContext="shape" transform="translate(298.73,-301.789)">
+				<title>HMI_Text_DobaAerace_SBR</title>
+				<path d="M0 625.33 L112.46 625.33 L112.46 655.32 L0 655.32 L0 625.33 Z" class="st5"/>
+			</g>
+			<g id="shape284-20" v:mID="284" v:groupContext="shape" transform="translate(298.73,-169.828)">
+				<title>HMI_Text_DobaAerace_Kal</title>
+				<path d="M0 625.33 L112.46 625.33 L112.46 655.32 L0 655.32 L0 625.33 Z" class="st5"/>
+			</g>
+			<g id="shape292-22" v:mID="292" v:groupContext="shape" transform="translate(17.4331,-341.646)">
+				<title>List.292</title>
+				<desc>Čerpací stanice:</desc>
+				<v:userDefs/>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="308.973" cy="639.734" width="617.98" height="31.1811"/>
+				<rect x="0" y="624.143" width="617.953" height="31.1811" class="st6"/>
+				<text x="4.73" y="648.73" class="st7" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>Nastavení provzdušňování v SBR nádržích</text>			</g>
+			<g id="shape293-25" v:mID="293" v:groupContext="shape" transform="translate(21.685,-208.772)">
+				<title>List.293</title>
+				<desc>Čerpací stanice:</desc>
+				<v:userDefs/>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="306.138" cy="639.734" width="612.31" height="31.1811"/>
+				<rect x="0" y="624.143" width="612.283" height="31.1811" class="st6"/>
+				<text x="4.37" y="648.73" class="st7" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>Nastavení provzdušňování v kalové nádrži</text>			</g>
+			<g id="shape294-28" v:mID="294" v:groupContext="shape" transform="translate(17.315,-476.646)">
+				<title>List.158</title>
+				<desc>Min</desc>
+				<v:userDefs/>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="97.1407" cy="639.734" width="194.32" height="31.1811"/>
+				<rect x="0" y="624.143" width="194.291" height="31.1811" class="st6"/>
+				<text x="5.43" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>Dmychadlo 1:</text>			</g>
+			<g id="shape295-31" v:mID="295" v:groupContext="shape" transform="translate(258.378,-478.063)">
+				<title>List.295</title>
+				<desc>Min</desc>
+				<v:userDefs/>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="97.1407" cy="639.734" width="194.32" height="31.1811"/>
+				<rect x="0" y="624.143" width="194.291" height="31.1811" class="st6"/>
+				<text x="5.43" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>Dmychadlo 2:</text>			</g>
+			<g id="shape296-34" v:mID="296" v:groupContext="shape" transform="translate(495.78,-478.063)">
+				<title>List.296</title>
+				<desc>Min</desc>
+				<v:userDefs/>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="97.1407" cy="639.734" width="194.32" height="31.1811"/>
+				<rect x="0" y="624.143" width="194.291" height="31.1811" class="st6"/>
+				<text x="5.43" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>Dmychadlo 3:</text>			</g>
+			<g id="shape297-37" v:mID="297" v:groupContext="shape" transform="translate(18.1831,-384.52)">
+				<title>List.297</title>
+				<desc>Min</desc>
+				<v:userDefs/>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="85.7023" cy="639.734" width="171.44" height="31.1811"/>
+				<rect x="0" y="624.143" width="171.413" height="31.1811" class="st6"/>
+				<text x="4.83" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>Počet cyklů:</text>			</g>
+			<g id="shape298-40" v:mID="298" v:groupContext="shape" transform="translate(17.7165,-305.15)">
+				<title>List.298</title>
+				<desc>Min</desc>
+				<v:userDefs/>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="94.6723" cy="639.734" width="189.38" height="31.1811"/>
+				<rect x="0" y="624.143" width="189.354" height="31.1811" class="st6"/>
+				<text x="4.61" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>Doba aerace:</text>			</g>
+			<g id="shape299-43" v:mID="299" v:groupContext="shape" transform="translate(17.4331,-261.213)">
+				<title>List.299</title>
+				<desc>Min</desc>
+				<v:userDefs/>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="135.171" cy="639.734" width="270.39" height="31.1811"/>
+				<rect x="0" y="624.143" width="270.355" height="31.1811" class="st6"/>
+				<text x="5.93" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>Doba sedimentace:</text>			</g>
+			<g id="shape300-46" v:mID="300" v:groupContext="shape" transform="translate(21.9685,-173.339)">
+				<title>List.300</title>
+				<desc>Min</desc>
+				<v:userDefs/>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="94.6723" cy="639.734" width="189.38" height="31.1811"/>
+				<rect x="0" y="624.143" width="189.354" height="31.1811" class="st6"/>
+				<text x="4.61" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>Doba aerace:</text>			</g>
+			<g id="shape301-49" v:mID="301" v:groupContext="shape" transform="translate(365.487,-378.85)">
+				<title>List.301</title>
+				<desc>Min</desc>
+				<v:userDefs/>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="23.9718" cy="639.734" width="47.96" height="31.1811"/>
+				<rect x="0" y="624.143" width="47.946" height="31.1811" class="st6"/>
+				<text x="7.29" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>00</text>			</g>
+			<g id="shape302-52" v:mID="302" v:groupContext="shape" transform="translate(339.165,-300.898)">
+				<title>List.302</title>
+				<desc>Min</desc>
+				<v:userDefs/>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="38.3927" cy="639.734" width="76.8" height="31.1811"/>
+				<rect x="0" y="624.143" width="76.7893" height="31.1811" class="st6"/>
+				<text x="5.02" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>0000</text>			</g>
+			<g id="shape303-55" v:mID="303" v:groupContext="shape" transform="translate(339.165,-258.378)">
+				<title>List.303</title>
+				<desc>Min</desc>
+				<v:userDefs/>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="38.3927" cy="639.734" width="76.8" height="31.1811"/>
+				<rect x="0" y="624.143" width="76.7893" height="31.1811" class="st6"/>
+				<text x="5.02" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>0000</text>			</g>
+			<g id="shape304-58" v:mID="304" v:groupContext="shape" transform="translate(339.638,-169.087)">
+				<title>List.304</title>
+				<desc>Min</desc>
+				<v:userDefs/>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="38.3927" cy="639.734" width="76.8" height="31.1811"/>
+				<rect x="0" y="624.143" width="76.7893" height="31.1811" class="st6"/>
+				<text x="5.02" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>0000</text>			</g>
+			<g id="shape291-61" v:mID="291" v:groupContext="shape" transform="translate(16.0157,-421.37)">
+				<title>List.154</title>
+				<desc>Čerpací stanice:</desc>
+				<v:userDefs/>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="236.69" cy="639.734" width="473.41" height="31.1811"/>
+				<rect x="0" y="624.143" width="473.386" height="31.1811" class="st6"/>
+				<text x="6.55" y="648.73" class="st7" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>Počet cyklů aerace/sedimentace</text>			</g>
+			<g id="shape305-64" v:mID="305" v:groupContext="shape" transform="translate(612.354,-102.472)">
+				<title>List.171</title>
+				<desc>Úvodní obrazovka</desc>
+				<v:userDefs/>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="113.916" cy="625.56" width="227.84" height="59.5276"/>
+				<rect x="0" y="595.797" width="227.835" height="59.5276" class="st6"/>
+				<text x="10.56" y="632.76" class="st9" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>Úvodní obrazovka</text>			</g>
+			<g id="shape306-67" v:mID="306" v:groupContext="shape" transform="translate(611.291,-28.7719)">
+				<title>List.173</title>
+				<desc>Zpět</desc>
+				<v:userDefs/>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="113.916" cy="625.56" width="227.84" height="59.5276"/>
+				<rect x="0" y="595.797" width="227.835" height="59.5276" class="st6"/>
+				<text x="88.59" y="632.76" class="st9" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>Zpět</text>			</g>
+			<g id="shape35-70" v:mID="35" v:groupContext="shape" transform="translate(784.648,-529.723)">
+				<title>HMI_Kruh_Indikace</title>
+				<path d="M74.98 617.83 C74.98 619.06 74.92 620.29 74.8 621.51 C74.68 622.73 74.5 623.94 74.26 625.15 C74.02 626.35
+							 73.72 627.54 73.37 628.71 C73.01 629.89 72.6 631.05 72.13 632.18 C71.66 633.31 71.13 634.42 70.55 635.5
+							 C69.97 636.59 69.34 637.64 68.66 638.66 C67.98 639.68 67.25 640.67 66.47 641.62 C65.69 642.57 64.87
+							 643.47 64 644.34 C63.13 645.21 62.22 646.04 61.27 646.81 C60.32 647.59 59.34 648.32 58.32 649 C57.3
+							 649.69 56.25 650.32 55.16 650.89 C54.08 651.47 52.97 652 51.84 652.47 C50.7 652.94 49.55 653.35 48.38
+							 653.71 C47.2 654.07 46.01 654.36 44.8 654.6 C43.6 654.84 42.39 655.02 41.16 655.14 C39.95 655.26 38.72
+							 655.32 37.49 655.32 C36.26 655.32 35.04 655.26 33.82 655.14 C32.59 655.02 31.38 654.84 30.18 654.6 C28.97
+							 654.36 27.78 654.07 26.61 653.71 C25.43 653.35 24.28 652.94 23.14 652.47 C22.01 652 20.9 651.47 19.82
+							 650.89 C18.73 650.32 17.68 649.69 16.66 649 C15.64 648.32 14.66 647.59 13.71 646.81 C12.76 646.04 11.85
+							 645.21 10.98 644.34 C10.11 643.47 9.29 642.57 8.51 641.62 C7.73 640.67 7 639.68 6.32 638.66 C5.64 637.64
+							 5.01 636.59 4.43 635.5 C3.85 634.42 3.32 633.31 2.86 632.18 C2.39 631.05 1.97 629.89 1.62 628.71 C1.26
+							 627.54 0.96 626.35 0.72 625.15 C0.48 623.94 0.3 622.73 0.18 621.51 C0.06 620.29 0 619.06 0 617.83 C0
+							 616.61 0.06 615.38 0.18 614.16 C0.3 612.94 0.48 611.72 0.72 610.52 C0.96 609.32 1.26 608.13 1.62 606.95
+							 C1.97 605.78 2.39 604.62 2.86 603.49 C3.32 602.35 3.85 601.24 4.43 600.16 C5.01 599.08 5.64 598.03 6.32
+							 597 C7 595.98 7.73 595 8.51 594.05 C9.29 593.1 10.11 592.19 10.98 591.32 C11.85 590.46 12.76 589.63
+							 13.71 588.86 C14.66 588.07 15.64 587.34 16.66 586.66 C17.68 585.98 18.73 585.35 19.82 584.77 C20.9 584.19
+							 22.01 583.67 23.14 583.2 C24.28 582.73 25.43 582.32 26.61 581.96 C27.78 581.6 28.97 581.3 30.18 581.06
+							 C31.38 580.82 32.59 580.64 33.82 580.52 C35.04 580.4 36.26 580.34 37.49 580.34 C38.72 580.34 39.95 580.4
+							 41.16 580.52 C42.39 580.64 43.6 580.82 44.8 581.06 C46.01 581.3 47.2 581.6 48.38 581.96 C49.55 582.32
+							 50.7 582.73 51.84 583.2 C52.97 583.67 54.08 584.19 55.16 584.77 C56.25 585.35 57.3 585.98 58.32 586.66
+							 C59.34 587.34 60.32 588.07 61.27 588.86 C62.22 589.63 63.13 590.46 64 591.32 C64.87 592.19 65.69 593.1
+							 66.47 594.05 C67.25 595 67.98 595.98 68.66 597 C69.34 598.03 69.97 599.08 70.55 600.16 C71.13 601.24
+							 71.66 602.35 72.13 603.49 C72.6 604.62 73.01 605.78 73.37 606.95 C73.72 608.13 74.02 609.32 74.26 610.52
+							 C74.5 611.72 74.68 612.94 74.8 614.16 C74.92 615.38 74.98 616.61 74.98 617.83 Z" class="st10"/>
+			</g>
+			<g id="shape290-72" v:mID="290" v:groupContext="shape" transform="translate(24.5197,-534.756)">
+				<title>List.153</title>
+				<desc>Stav nádrží</desc>
+				<v:userDefs/>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="233.856" cy="619.891" width="467.73" height="70.8661"/>
+				<rect x="0" y="584.458" width="467.717" height="70.8661" class="st6"/>
+				<text x="5.43" y="637.89" class="st11" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>Stav dmychadel</text>			</g>
+			<g id="shape88-75" v:mID="88" v:groupContext="shape" transform="translate(447.734,-475.254)">
+				<title>HMI_Ctverec_Dmychadlo_2</title>
+				<path d="M0 617.83 L44.98 617.83 L44.98 655.32 L0 655.32 L0 617.83 Z" class="st3"/>
+			</g>
+			<g id="shape63-77" v:mID="63" v:groupContext="shape" transform="translate(687.077,-475.254)">
+				<title>HMI_Ctverec_Dmychadlo_3</title>
+				<path d="M0 617.83 L44.99 617.83 L44.99 655.32 L0 655.32 L0 617.83 Z" class="st3"/>
+			</g>
+		</g>
+	</g>
+</svg>
