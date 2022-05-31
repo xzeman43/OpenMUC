@@ -218,12 +218,32 @@
         this.getChannel = function (channelId) {
             var channel = {
                 id: channelId,
-                configs: []
+                configs: {}
             };
 
-            ChannelDataService.getChannelData(channel).then(configs => channel.configs = configs);
+            return ChannelDataService.getChannelData(channel).then( async function (configs) {
 
-            return channel;
+               channel.configs = await configs;
+               return channel;
+            });
+            // Not working when the returning variable is defined outside
+            // ChannelDataService.getChannelData(channel).then(configs => channel.configs = configs);
+            // return channel;
+        };
+
+        this.getChannelDatas = function (id) {
+            var req = {
+                method: 'GET',
+                url: SETTINGS.API_URL + SETTINGS.CHANNELS_URL + id + SETTINGS.CONFIGS_URL ,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': RestServerAuthService.getAuthHash()
+                }
+            };
+
+            return $http(req).then(function (response) {
+                return response;
+            });
         };
 
         this.getChannelCurrentValue = function (channelId) {

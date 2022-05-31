@@ -22,7 +22,7 @@
 		.st8 {fill:#000000;font-family:Arial;font-size:2.74999em;font-weight:bold}
 		.st9 {fill:#000000;font-family:Arial;font-size:2.50001em}
 		.st10 {fill:#ffffff;font-family:Arial;font-size:1.99999em;font-weight:bold}
-		.st11 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+		.st11 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3;width:100%;height:auto}
 	]]>
 	</style>
 
@@ -43,9 +43,9 @@
 				<title>path205</title>
 				<path d="M0 40.5 L869.75 40.5 L869.75 655.32 L0 655.32 L0 40.5 Z" class="st2"/>
 			</g>
-			<g id="shape5-7" v:mID="5" v:groupContext="shape" transform="translate(784.648,-529.723)">
+			<g v:mID="5" v:groupContext="shape" transform="translate(784.648,-529.723)">
 				<title>HMI_Kruh_Indikace</title>
-				<path d="M74.98 617.83 C74.98 619.06 74.92 620.29 74.8 621.51 C74.68 622.73 74.5 623.94 74.26 625.15 C74.02 626.35
+				<path id="HMI_Kruh_Indikace" d="M74.98 617.83 C74.98 619.06 74.92 620.29 74.8 621.51 C74.68 622.73 74.5 623.94 74.26 625.15 C74.02 626.35
 							 73.72 627.54 73.37 628.71 C73.01 629.89 72.6 631.05 72.13 632.18 C71.66 633.31 71.13 634.42 70.55 635.5
 							 C69.97 636.59 69.34 637.64 68.66 638.66 C67.98 639.68 67.25 640.67 66.47 641.62 C65.69 642.57 64.87
 							 643.47 64 644.34 C63.13 645.21 62.22 646.04 61.27 646.81 C60.32 647.59 59.34 648.32 58.32 649 C57.3
@@ -68,33 +68,33 @@
 							 C59.34 587.34 60.32 588.07 61.27 588.86 C62.22 589.63 63.13 590.46 64 591.32 C64.87 592.19 65.69 593.1
 							 66.47 594.05 C67.25 595 67.98 595.98 68.66 597 C69.34 598.03 69.97 599.08 70.55 600.16 C71.13 601.24
 							 71.66 602.35 72.13 603.49 C72.6 604.62 73.01 605.78 73.37 606.95 C73.72 608.13 74.02 609.32 74.26 610.52
-							 C74.5 611.72 74.68 612.94 74.8 614.16 C74.92 615.38 74.98 616.61 74.98 617.83 Z" class="st3"/>
+							 C74.5 611.72 74.68 612.94 74.8 614.16 C74.92 615.38 74.98 616.61 74.98 617.83 Z" fill="#FF0000" stroke="#000000"/>
 			</g>
-			<g id="shape33-9" v:mID="33" v:groupContext="shape" transform="translate(102.344,-439.75)">
+			<g v:mID="33" v:groupContext="shape" transform="translate(102.344,-439.75)">
 				<title>HMI_Ctverec_Cerpaci_Min</title>
-				<path d="M0 617.84 L44.99 617.84 L44.99 655.32 L0 655.32 L0 617.84 Z" class="st4"/>
+				<path id="HMI_Ctverec_Cerpaci_Min" d="M0 617.84 L44.99 617.84 L44.99 655.32 L0 655.32 L0 617.84 Z" fill="#FFFFFF" stroke="#000000"/>
 			</g>
-			<g id="shape42-11" v:mID="42" v:groupContext="shape" transform="translate(222.312,-439.75)">
+			<g v:mID="42" v:groupContext="shape" transform="translate(222.312,-439.75)">
 				<title>HMI_Ctverec_Cerpaci_Max</title>
-				<path d="M0 617.84 L44.98 617.84 L44.98 655.32 L0 655.32 L0 617.84 Z" class="st4"/>
+				<path id="HMI_Ctverec_Cerpaci_Max" d="M0 617.84 L44.98 617.84 L44.98 655.32 L0 655.32 L0 617.84 Z" fill="#FFFFFF" stroke="#000000"/>
 			</g>
-			<g id="shape54-13" v:mID="54" v:groupContext="shape" transform="translate(222.312,-342.277)">
+			<g v:mID="54" v:groupContext="shape" transform="translate(222.312,-342.277)">
 				<title>HMI_Ctverec_SBR_1_Max</title>
-				<path d="M0 617.84 L44.98 617.84 L44.98 655.32 L0 655.32 L0 617.84 Z" class="st4"/>
+				<path id="HMI_Ctverec_SBR_1_Max" d="M0 617.84 L44.98 617.84 L44.98 655.32 L0 655.32 L0 617.84 Z" fill="#FFFFFF" stroke="#000000"/>
 			</g>
-			<g id="shape55-15" v:mID="55" v:groupContext="shape" transform="translate(102.344,-342.277)">
+			<g v:mID="55" v:groupContext="shape" transform="translate(102.344,-342.277)">
 				<title>HMI_Ctverec_SBR_1_Min</title>
-				<path d="M0 617.84 L44.99 617.84 L44.99 655.32 L0 655.32 L0 617.84 Z" class="st4"/>
+				<path id="HMI_Ctverec_SBR_1_Min" d="M0 617.84 L44.99 617.84 L44.99 655.32 L0 655.32 L0 617.84 Z" fill="#FFFFFF" stroke="#000000"/>
 			</g>
-			<g id="shape75-17" v:mID="75" v:groupContext="shape" transform="translate(102.344,-244.805)">
+			<g v:mID="75" v:groupContext="shape" transform="translate(102.344,-244.805)">
 				<title>HMI_Ctverec_SBR_2_Min</title>
-				<path d="M0 617.83 L44.99 617.83 L44.99 655.32 L0 655.32 L0 617.83 Z" class="st4"/>
+				<path id="HMI_Ctverec_SBR_2_Min" d="M0 617.83 L44.99 617.83 L44.99 655.32 L0 655.32 L0 617.83 Z" fill="#FFFFFF" stroke="#000000"/>
 			</g>
-			<g id="shape76-19" v:mID="76" v:groupContext="shape" transform="translate(222.312,-244.805)">
+			<g v:mID="76" v:groupContext="shape" transform="translate(222.312,-244.805)">
 				<title>HMI_Ctverec_SBR_2_Max</title>
-				<path d="M0 617.83 L44.98 617.83 L44.98 655.32 L0 655.32 L0 617.83 Z" class="st4"/>
+				<path id="HMI_Ctverec_SBR_2_Max" d="M0 617.83 L44.98 617.83 L44.98 655.32 L0 655.32 L0 617.83 Z" fill="#FFFFFF" stroke="#000000"/>
 			</g>
-			<g id="shape96-21" v:mID="96" v:groupContext="shape" transform="translate(619.699,-102.348)">
+			<g id="HMI_Tlac_Uvod" v:mID="96" v:groupContext="shape" transform="translate(619.699,-102.348)">
 				<title>HMI_Tlac_Uvod</title>
 				<path d="M0 595.34 L224.93 595.34 L224.93 655.32 L0 655.32 L0 595.34 Z" class="st5"/>
 			</g>
@@ -102,25 +102,25 @@
 				<title>path435</title>
 				<path d="M0 595.34 L224.93 595.34 L224.93 655.32 L0 655.32 L0 595.34 Z" class="st5"/>
 			</g>
-			<g id="shape114-25" v:mID="114" v:groupContext="shape" transform="translate(619.699,-27.3672)">
+			<g id="back" v:mID="114" v:groupContext="shape" transform="translate(619.699,-27.3672)">
 				<title>HMI_Tlac_Zpet_Nadrz</title>
 				<path d="M0 595.34 L224.93 595.34 L224.93 655.32 L0 655.32 L0 595.34 Z" class="st5"/>
 			</g>
-			<g id="shape124-27" v:mID="124" v:groupContext="shape" transform="translate(462.242,-439.75)">
+			<g v:mID="124" v:groupContext="shape" transform="translate(462.242,-439.75)">
 				<title>HMI_Ctverec_Kal_Min</title>
-				<path d="M0 617.84 L44.99 617.84 L44.99 655.32 L0 655.32 L0 617.84 Z" class="st4"/>
+				<path id="HMI_Ctverec_Kal_Min" d="M0 617.84 L44.99 617.84 L44.99 655.32 L0 655.32 L0 617.84 Z" fill="#FFFFFF" stroke="#000000"/>
 			</g>
-			<g id="shape129-29" v:mID="129" v:groupContext="shape" transform="translate(582.207,-439.75)">
+			<g v:mID="129" v:groupContext="shape" transform="translate(582.207,-439.75)">
 				<title>HMI_Ctverec_Kal_Max</title>
-				<path d="M0 617.84 L44.99 617.84 L44.99 655.32 L0 655.32 L0 617.84 Z" class="st4"/>
+				<path id="HMI_Ctverec_Kal_Max" d="M0 617.84 L44.99 617.84 L44.99 655.32 L0 655.32 L0 617.84 Z" fill="#FFFFFF" stroke="#000000"/>
 			</g>
-			<g id="shape151-31" v:mID="151" v:groupContext="shape" transform="translate(582.207,-342.277)">
+			<g v:mID="151" v:groupContext="shape" transform="translate(582.207,-342.277)">
 				<title>HMI_Ctverec_Dest_Max</title>
-				<path d="M0 617.84 L44.99 617.84 L44.99 655.32 L0 655.32 L0 617.84 Z" class="st4"/>
+				<path id="HMI_Ctverec_Dest_Max" d="M0 617.84 L44.99 617.84 L44.99 655.32 L0 655.32 L0 617.84 Z" fill="#FFFFFF" stroke="#000000"/>
 			</g>
-			<g id="shape152-33" v:mID="152" v:groupContext="shape" transform="translate(462.242,-342.277)">
+			<g v:mID="152" v:groupContext="shape" transform="translate(462.242,-342.277)">
 				<title>HMI_Ctverec_Dest_Min</title>
-				<path d="M0 617.84 L44.99 617.84 L44.99 655.32 L0 655.32 L0 617.84 Z" class="st4"/>
+				<path id="HMI_Ctverec_Dest_Min" d="M0 617.84 L44.99 617.84 L44.99 655.32 L0 655.32 L0 617.84 Z" fill="#FFFFFF" stroke="#000000"/>
 			</g>
 		</g>
 		<g id="shape153-35" v:mID="153" v:groupContext="shape" transform="translate(29.1969,-552.756)">

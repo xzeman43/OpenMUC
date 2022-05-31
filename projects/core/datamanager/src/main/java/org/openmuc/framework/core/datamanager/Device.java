@@ -595,7 +595,8 @@ public final class Device {
     public <T extends DeviceTask & ConnectedTask> void addTask(T deviceTask) {
         if (isConnected()) {
             taskList.add(deviceTask);
-            if (containsOneTask()) {
+            //TODO Why there was a check for containing one task only???
+            if (!containsOneTask()) {
                 state = deviceTask.getType().getResultingState();
                 dataManager.executor.execute(deviceTask);
             }

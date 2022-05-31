@@ -20,33 +20,26 @@
  */
 package org.openmuc.framework.driver.s7;
 
-import static org.openmuc.framework.config.option.annotation.OptionType.ADDRESS;
-import static org.openmuc.framework.config.option.annotation.OptionType.SETTING;
-
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.BitSet;
-import java.util.List;
-import java.util.Date;
-import java.io.*;
-import java.text.*;
-import java.util.concurrent.ExecutionException;
-import java.util.stream.Collectors;
-
 import org.openmuc.framework.config.option.annotation.Option;
-import org.openmuc.framework.data.*;
+import org.openmuc.framework.data.BooleanValue;
+import org.openmuc.framework.data.Flag;
+import org.openmuc.framework.data.IntValue;
+import org.openmuc.framework.data.Record;
 import org.openmuc.framework.driver.DriverDevice;
-import org.openmuc.framework.driver.annotation.Connect;
-import org.openmuc.framework.driver.annotation.Device;
-import org.openmuc.framework.driver.annotation.Disconnect;
-import org.openmuc.framework.driver.annotation.Read;
-import org.openmuc.framework.driver.annotation.Write;
+import org.openmuc.framework.driver.annotation.*;
+import org.openmuc.framework.driver.s7.lib.*;
 import org.openmuc.framework.driver.spi.ConnectionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.openmuc.framework.driver.s7.lib.*;
+
+import java.nio.ByteBuffer;
+import java.text.SimpleDateFormat;
+import java.util.BitSet;
+import java.util.Date;
+import java.util.List;
+
+import static org.openmuc.framework.config.option.annotation.OptionType.ADDRESS;
+import static org.openmuc.framework.config.option.annotation.OptionType.SETTING;
 
 @Device(channel = S7Channel.class)
 public class S7DriverConnection extends DriverDevice {
@@ -133,289 +126,8 @@ public class S7DriverConnection extends DriverDevice {
             System.out.println();
     }
 
-    static void TestBegin(String FunctionName)
-    {
-        System.out.println();
-        System.out.println("+================================================================");
-        System.out.println("| "+FunctionName);
-        System.out.println("+================================================================");
-        Elapsed = System.currentTimeMillis();
-    }
-
-    static void TestEnd(int Result)
-    {
-        if (Result!=0)
-        {
-            ko++;
-            Error(Result);
-        }
-        else
-            ok++;
-        System.out.println("Execution time "+(System.currentTimeMillis()-Elapsed)+" ms");
-    }
-
-    static void Error(int Code)
-    {
-        System.out.println(S7Client.ErrorText(Code));
-    }
-
-    static void BlockInfo(int BlockType, int BlockNumber)
-    {
-        S7BlockInfo Block = new S7BlockInfo();
-        TestBegin("GetAgBlockInfo()");
-
-        int Result = Client.GetAgBlockInfo(BlockType, BlockNumber, Block);
-        if (Result==0)
-        {
-            System.out.println("Block Flags     : "+Integer.toBinaryString(Block.BlkFlags()));
-            System.out.println("Block Number    : "+Block.BlkNumber());
-            System.out.println("Block Languege  : "+Block.BlkLang());
-            System.out.println("Load Size       : "+Block.LoadSize());
-            System.out.println("SBB Length      : "+Block.SBBLength());
-            System.out.println("Local Data      : "+Block.LocalData());
-            System.out.println("MC7 Size        : "+Block.MC7Size());
-            System.out.println("Author          : "+Block.Author());
-            System.out.println("Family          : "+Block.Family());
-            System.out.println("Header          : "+Block.Header());
-            System.out.println("Version         : "+Block.Version());
-            System.out.println("Checksum        : 0x"+Integer.toHexString(Block.Checksum()));
-            SimpleDateFormat ft = new SimpleDateFormat ("dd/MM/yyyy");
-            System.out.println("Code Date       : "+ft.format(Block.CodeDate()));
-            System.out.println("Interface Date  : "+ft.format(Block.IntfDate()));
-        }
-        TestEnd(Result);
-    }
-
-    public static boolean DBGet()
-    {
-        IntByRef SizeRead = new IntByRef(0);
-        TestBegin("DBGet()");
-        int Result = Client.DBGet(DBSample, Buffer, SizeRead);
-        TestEnd(Result);
-        if (Result==0)
-        {
-            DataToMove = SizeRead.Value; // Stores DB size for next test
-            System.out.println("DB "+DBSample+" - Size read "+DataToMove+" bytes");
-            HexDump(Buffer, DataToMove);
-            return true;
-        }
-        return false;
-    }
-
-    public static void DBRead()
-    {
-        TestBegin("ReadArea()");
-        int Result = Client.ReadArea(S7.S7AreaDB, DBSample, 0, DataToMove, Buffer);
-        if (Result==0)
-        {
-            System.out.println("DB "+DBSample+" succesfully read using size reported by DBGet()");
-        }
-        TestEnd(Result);
-    }
-
-    public static void MujTest(){
-        TestBegin("Vycitam()");
-        int Result = Client.ReadArea(S7.S7AreaPA, DBSample, 3, 1, Buffer);
-        System.out.println("Result"+ Result);
-        if (Result==0)
-        {
-            System.out.println("DB "+DBSample+" succesfully read using size reported by DBGet()");
-        }
-    }
-
-    public static void DBWrite()
-    {
-        TestBegin("WriteArea()");
-        int Result = Client.WriteArea(S7.S7AreaDB, DBSample, 0, DataToMove, Buffer);
-        if (Result==0)
-        {
-            System.out.println("DB "+DBSample+" succesfully written using size reported by DBGet()");
-        }
-        TestEnd(Result);
-    }
-    /**
-     * Performs read and write on a given DB
-     */
-    public static void DBPlay()
-    {
-        // We use DBSample (default = DB 1) as DB Number
-        // modify it if it doesn't exists into the CPU.
-        if (DBGet())
-        {
-            DBRead();
-            if (MakeAllTests)
-                DBWrite();
-        }
-    }
-
-    public static void Delay(int millisec)
-    {
-        try {
-            Thread.sleep(millisec);
-        }
-        catch (InterruptedException e) {}
-    }
-
-    public static void ShowStatus()
-    {
-        IntByRef PlcStatus = new IntByRef(S7.S7CpuStatusUnknown);
-        TestBegin("GetPlcStatus()");
-        int Result = Client.GetPlcStatus(PlcStatus);
-        if (Result==0)
-        {
-            System.out.print("PLC Status : ");
-            switch (PlcStatus.Value)
-            {
-                case S7.S7CpuStatusRun :
-                    System.out.println("RUN");
-                    break;
-                case S7.S7CpuStatusStop :
-                    System.out.println("STOP");
-                    break;
-                default :
-                    System.out.println("Unknown ("+PlcStatus.Value+")");
-            }
-        }
-        CurrentStatus = PlcStatus.Value;
-        TestEnd(Result);
-    }
-
-    public static void DoRun()
-    {
-        TestBegin("PlcHotStart()");
-        int Result = Client.PlcHotStart();
-        if (Result==0)
-            System.out.println("PLC Started");
-        TestEnd(Result);
-    }
-
-    public static void DoStop()
-    {
-        TestBegin("PlcStop()");
-        int Result = Client.PlcStop();
-        if (Result==0)
-            System.out.println("PLC Stopped");
-        TestEnd(Result);
-    }
-
-    public static void RunStop()
-    {
-        switch (CurrentStatus)
-        {
-            case S7.S7CpuStatusRun :
-                DoStop();
-                Delay(1000);
-                DoRun();
-                break;
-            case S7.S7CpuStatusStop :
-                DoRun();
-                Delay(1000);
-                DoStop();
-        }
-    }
-
-    public static void GetSysInfo()
-    {
-        int Result;
-        TestBegin("GetOrderCode()");
-        S7OrderCode OrderCode = new S7OrderCode();
-        Result = Client.GetOrderCode(OrderCode);
-        if (Result==0)
-        {
-            logger.info("Order Code        : "+OrderCode.Code());
-            logger.info("Firmware version  : "+OrderCode.V1+"."+OrderCode.V2+"."+OrderCode.V3);
-            System.out.println("Order Code        : "+OrderCode.Code());
-            System.out.println("Firmware version  : "+OrderCode.V1+"."+OrderCode.V2+"."+OrderCode.V3);
-        }
-        TestEnd(Result);
-
-        TestBegin("GetCpuInfo()");
-        S7CpuInfo CpuInfo = new S7CpuInfo();
-        Result = Client.GetCpuInfo(CpuInfo);
-        if (Result==0)
-        {
-            System.out.println("Module Type Name  : "+CpuInfo.ModuleTypeName());
-            System.out.println("Serial Number     : "+CpuInfo.SerialNumber());
-            System.out.println("AS Name           : "+CpuInfo.ASName());
-            System.out.println("CopyRight         : "+CpuInfo.Copyright());
-            System.out.println("Module Name       : "+CpuInfo.ModuleName());
-        }
-        TestEnd(Result);
-
-        TestBegin("GetCpInfo()");
-        S7CpInfo CpInfo = new S7CpInfo();
-        Result = Client.GetCpInfo(CpInfo);
-        if (Result==0)
-        {
-            System.out.println("Max PDU Length    : "+CpInfo.MaxPduLength);
-            System.out.println("Max connections   : "+CpInfo.MaxConnections);
-            System.out.println("Max MPI rate (bps): "+CpInfo.MaxMpiRate);
-            System.out.println("Max Bus rate (bps): "+CpInfo.MaxBusRate);
-        }
-        TestEnd(Result);
-    }
-
-    public static void GetDateAndTime()
-    {
-        Date PlcDateTime = new Date();
-        TestBegin("GetPlcDateTime()");
-        int Result = Client.GetPlcDateTime(PlcDateTime);
-        if (Result==0)
-            System.out.println("CPU Date/Time : "+PlcDateTime);
-        TestEnd(Result);
-    }
-
-    public static void SyncDateAndTime()
-    {
-        TestBegin("SetPlcSystemDateTime()");
-        int Result = Client.SetPlcSystemDateTime();
-        TestEnd(Result);
-    }
-
-    public static void ReadSzl()
-    {
-        S7Szl SZL = new S7Szl(1024);
-        TestBegin("ReadSZL() - ID : 0x0011, IDX : 0x0000");
-        int Result = Client.ReadSZL(0x0011, 0x0000, SZL);
-        if (Result==0)
-        {
-            System.out.println("LENTHDR : "+SZL.LENTHDR);
-            System.out.println("N_DR    : "+SZL.N_DR);
-            System.out.println("Size    : "+SZL.DataSize);
-            HexDump(SZL.Data,SZL.DataSize);
-        }
-        TestEnd(Result);
-    }
-
-    public static void GetProtectionScheme()
-    {
-        S7Protection Protection = new S7Protection();
-        TestBegin("GetProtection()");
-        int Result = Client.GetProtection(Protection);
-        if (Result==0)
-        {
-            System.out.println("sch_schal : "+Protection.sch_schal);
-            System.out.println("sch_par   : "+Protection.sch_par);
-            System.out.println("sch_rel   : "+Protection.sch_rel);
-            System.out.println("bart_sch  : "+Protection.bart_sch);
-            System.out.println("anl_sch   : "+Protection.anl_sch);
-        }
-        TestEnd(Result);
-    }
-
-    public static void Summary()
-    {
-        System.out.println();
-        System.out.println("+================================================================");
-        System.out.println("Tests performed : "+(ok+ko));
-        System.out.println("Passed          : "+ok);
-        System.out.println("Failed          : "+ko);
-        System.out.println("+================================================================");
-    }
-
     public boolean Connect()
     {
-        TestBegin("ConnectTo()");
         if(conType == 3){
             Client.SetConnectionType(S7.S7_BASIC);
         }else if( conType == 2) {
@@ -432,39 +144,7 @@ public class S7DriverConnection extends DriverDevice {
             logger.info("PDU negotiated : " + Client.PDULength()+" bytes");
             System.out.println("PDU negotiated : " + Client.PDULength()+" bytes");
         }
-        TestEnd(Result);
         return Result == 0;
-    }
-
-
-    public static void PerformTests()
-    {
-        GetSysInfo();
-        GetProtectionScheme();
-        GetDateAndTime();
-        if (MakeAllTests)
-            SyncDateAndTime();
-        ReadSzl();
-        ShowStatus();
-        if (MakeAllTests)
-            RunStop();
-        BlockInfo(S7.Block_SFC,1); // Get SFC 1 info (always present in a CPU)
-        DBPlay();
-        Summary();
-    }
-
-    public static void Usage()
-    {
-        System.out.println("Usage");
-        System.out.println("  client <IP> [Rack=0 Slot=2]");
-        System.out.println("Example");
-        System.out.println("  client 192.168.1.101 0 2");
-        System.out.println("or");
-        System.out.println("  client 192.168.1.101");
-    }
-
-    public int getNamespaceIndex() {
-        return namespaceIndex;
     }
 
     @Connect
@@ -488,14 +168,17 @@ public class S7DriverConnection extends DriverDevice {
     public void read(List<S7Channel> channels, String samplingGroup)
             throws ConnectionException {
         try {
-            boolean[] IQread = new boolean[10];
-            BitSet[] Ibits = new BitSet[10];
+            boolean[] IQread = new boolean[20];
+            boolean[] dbBoolRead= new boolean[20];
+            BitSet[] Ibits = new BitSet[20];
+            BitSet[] dbIBits = new BitSet[20];
             for (S7Channel channel : channels){
                 int area = channel.getArea();
                 if(area == 129 || area == 130) {
                     String inputPlace = channel.getPlace();
-                    int bytePos = Character.getNumericValue(inputPlace.charAt(0));
-                    int bitPos = Character.getNumericValue(inputPlace.charAt(2));
+                    String[] split = inputPlace.split("\\.");
+                    int bytePos = Integer.parseInt(split[0]);
+                    int bitPos = Integer.parseInt(split[1]);
                     if(IQread[bytePos] == false){
                         int Result = Client.ReadArea(channel.getArea(), DBSample, bytePos, 1, Buffer);
                         if (Result == 0){
@@ -508,34 +191,44 @@ public class S7DriverConnection extends DriverDevice {
                     }
 
                 }
+                if(area==132){
+                    String inputPlace = channel.getPlace();
+                    String[] split = inputPlace.split("\\.");
+                    int bytePos = Integer.parseInt(split[0]);
+                    if(split.length > 1) {
+                        int bitPos = Integer.parseInt(split[1]);
+                        if(dbBoolRead[bytePos] == false) {
+                            int Result = Client.ReadArea(channel.getArea(), channel.getDbNum(), bytePos, 1, Buffer);
+                            if (Result == 0) {
+                                dbBoolRead[bytePos] = true;
+                                dbIBits[bytePos] = BitSet.valueOf(new byte[]{Buffer[bytePos]});
+                                channel.setRecord(new Record(new BooleanValue(dbIBits[bytePos].get(bitPos)), System.currentTimeMillis()));
+                            }
+                        }else{
+                            channel.setRecord(new Record(new BooleanValue(dbIBits[bytePos].get(bitPos)), System.currentTimeMillis()));
+                        }
+                    }else{
+                        int length = channel.getValueLength(channel.getValueType());
+                        if (length != 0) {
+                            int Result = Client.ReadArea(channel.getArea(), channel.getDbNum(), bytePos, length, Buffer);
+                            if (Result == 0) {
+                                byte[] res = new byte[4];
+                                System.arraycopy(Buffer, bytePos, res, 0, length);
+                                ByteBuffer byteBuffer = ByteBuffer.wrap(res);
+                                int resik =0;
+                                if(length == 2){
+                                    short s = byteBuffer.getShort();
+                                    resik = 0xFFFF & s;
+                                }else {
+                                    resik = byteBuffer.getInt();
+                                }
+                                channel.setRecord(new Record(new IntValue(resik), System.currentTimeMillis()));
+                            }
+                        }
+                    }
+                }
             }
 
-
-//            int Result = Client.ReadArea(S7.S7AreaPE, DBSample, 0, 8, Buffer);
-//            if (Result == 0){
-//                BitSet bitSet = BitSet.valueOf(new byte[] {Buffer[0]});
-//
-//                channels.get(0).setRecord(new Record(new BooleanValue(bitSet.get(1)), System.currentTimeMillis()));
-//                channels.get(0).setRecord(new Record(new IntValue(Buffer[0] & 0x0FF), System.currentTimeMillis()));
-//            }
-//            List<NodeId> nodeIds = channels.stream().map(c -> c.getNodeId()).collect(Collectors.toList());
-//            List<DataValue> values = client.readValues(0.0, TimestampsToReturn.Both, nodeIds).get();
-//
-//            for (OpcChannel channel : channels) {
-//                try {
-//                    int index = nodeIds.indexOf(channel.getNodeId());
-//                    channel.setRecord(channel.decode(values.get(index)));
-//
-//                } catch (NullPointerException e) {
-//                    channel.setRecord(new Record(new DoubleValue(Double.NaN), System.currentTimeMillis(),
-//                            Flag.DRIVER_ERROR_READ_FAILURE));
-//                }
-//            }
-//        } catch (InterruptedException e) {
-//            for (OpcChannel channel : channels) {
-//                channel.setRecord(new Record(new DoubleValue(Double.NaN), System.currentTimeMillis(),
-//                        Flag.DRIVER_ERROR_TIMEOUT));
-//            }
         } catch ( NullPointerException e) {
             logger.warn("Reading data from OPC server failed. {}", e);
             throw new ConnectionException(e);
@@ -545,26 +238,97 @@ public class S7DriverConnection extends DriverDevice {
     @Write
     public void write(List<S7Channel> channels)
             throws ConnectionException {
-//        try {
-//            for (OpcChannel channel : channels) {
-//                DataValue value = channel.encode();
-//                try {
-//                    StatusCode status = client.writeValue(channel.getNodeId(), value).get();
-//
-//                    if (status.isGood()) {
-//                        channel.setFlag(Flag.VALID);
-//                    }
-//                    else {
-//                        logger.warn("Writing data to OPC UA channel {} failed: {}", channel.getId(), status.toString());
-//                    }
-//                } catch (InterruptedException e) {
-//                    channel.setFlag(Flag.DRIVER_ERROR_TIMEOUT);
-//                }
-//            }
-//        } catch (ExecutionException e) {
-//            logger.warn("Writing data to OPC server failed. {}", e);
-//            throw new ConnectionException(e);
-//        }
+        try {
+            boolean[] IQread = new boolean[20];
+            boolean[] dbBoolRead = new boolean[20];
+            BitSet[] Ibits = new BitSet[20];
+            BitSet[] dbIBits = new BitSet[20];
+            for (S7Channel channel : channels) {
+                int area = channel.getArea();
+                if (area == 129 || area == 130) {
+                    String inputPlace = channel.getPlace();
+                    String[] split = inputPlace.split("\\.");
+                    int bytePos = Integer.parseInt(split[0]);
+                    int bitPos = Integer.parseInt(split[1]);
+                    if (channel.getRecord().getValue().asBoolean() == false) {
+                        if (dbIBits[bytePos].get(bitPos)) {
+                            dbIBits[bytePos].clear(bitPos);
+                            byte[] array = dbIBits[bytePos].toByteArray();
+                            if (array.length < 1){
+                                array = new byte[]{0};
+                            }
+                            System.arraycopy(array, bytePos, Buffer, bytePos, 1);
+                            int Result = Client.WriteArea(channel.getArea(), channel.getDbNum(), bytePos, 1, Buffer);
+                            if (Result == 0) {
+                                channel.setFlag(Flag.VALID);
+                                logger.info("Sucessfully written! " + channel.getRecord().getValue());
+                            }
+                        }
+                    } else {
+                        dbIBits[bytePos].set(bitPos, true);
+                        System.arraycopy(dbIBits[bytePos].toByteArray(), bytePos, Buffer, bytePos, 1);
+                        int Result = Client.WriteArea(channel.getArea(), channel.getDbNum(), bytePos, 1, Buffer);
+                        if (Result == 0) {
+                            channel.setFlag(Flag.VALID);
+                            logger.info("Sucessfully written! " + channel.getRecord().getValue());
+                        }
+                    }
+
+                }
+                if (area == 132) {
+                    String inputPlace = channel.getPlace();
+                    String[] split = inputPlace.split("\\.");
+                    int bytePos = Integer.parseInt(split[0]);
+                    if (split.length > 1) {
+                        int bitPos = Integer.parseInt(split[1]);
+                        int RResult = Client.ReadArea(channel.getArea(), channel.getDbNum(), bytePos, 1, Buffer);
+                        if (RResult == 0) {
+                            dbBoolRead[bytePos] = true;
+                            dbIBits[bytePos] = BitSet.valueOf(new byte[]{Buffer[bytePos]});
+
+                            if (channel.getRecord().getValue().asBoolean() == false) {
+                                if (dbIBits[bytePos].get(bitPos)) {
+                                    dbIBits[bytePos].clear(bitPos);
+                                    byte[] array = dbIBits[bytePos].toByteArray();
+                                    if (array.length < 1){
+                                        array = new byte[]{0};
+                                    }
+                                    System.arraycopy(array, bytePos, Buffer, bytePos, 1);
+                                    int Result = Client.WriteArea(channel.getArea(), channel.getDbNum(), bytePos, 1, Buffer);
+                                    if (Result == 0) {
+                                        channel.setFlag(Flag.VALID);
+                                        logger.info("Sucessfully written! " + channel.getRecord().getValue());
+                                    }
+                                }
+                            } else {
+                                dbIBits[bytePos].set(bitPos, true);
+                                System.arraycopy(dbIBits[bytePos].toByteArray(), bytePos, Buffer, bytePos, 1);
+                                int Result = Client.WriteArea(channel.getArea(), channel.getDbNum(), bytePos, 1, Buffer);
+                                if (Result == 0) {
+                                    channel.setFlag(Flag.VALID);
+                                    logger.info("Sucessfully written! " + channel.getRecord().getValue());
+                                }
+                            }
+                        }
+                    } else {
+                        int length = channel.getValueLength(channel.getValueType());
+                        if (length != 0) {
+                            byte[] valueB = channel.getRecord().getValue().asByteArray();
+                            System.arraycopy(valueB, 0, Buffer, bytePos, length);
+                            int Result = Client.WriteArea(channel.getArea(), channel.getDbNum(), bytePos, length, Buffer);
+                            if (Result == 0) {
+                                channel.setFlag(Flag.VALID);
+                                logger.info("Sucessfully written! " + channel.getRecord().getValue());
+
+                            }
+                        }
+                    }
+                }
+            }
+        }catch ( NullPointerException e) {
+            logger.warn("Writing data from OPC server failed. {}", e);
+            throw new ConnectionException(e);
+        }
     }
 
 }

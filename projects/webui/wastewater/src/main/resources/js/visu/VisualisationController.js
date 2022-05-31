@@ -17,103 +17,56 @@
             item.addEventListener("click", function(e){
                 window.location = "#!/wastewater/menu";
                 console.log(e)});
-            // item1 = svg_document.getElementById("sokolnice");
-            // item1.addEventListener("click", function(e){
-            //     window.location = "#!/loop/sokolnice";
-            //     console.log(e)});
+            btnStart = svg_document.getElementById("start");
+            btnStart.addEventListener("click", function (e) {
+                var configs;
+                ChannelsService.getChannelDatas("HMI_Tlac_Start").then(async function(conf){
+                    configs = await conf.data.configs;
+                    if(configs !== undefined){
+                        var channel = {
+                            id: configs.id,
+                            type: configs.valueType,
+                            newValue: "true"
+                        };
+                        ChannelsService.writeChannel(channel, true);
+                    }
+                });
+            });
+            btnStop = svg_document.getElementById("stop");
+            btnStop.addEventListener("click", function (e) {
+                ChannelsService.getChannel("HMI_Tlac_Stop2").then(async function(channel){
+                    var can = await channel.configs;
+                    if(can !== undefined){
+                        var channell = {
+                            id: can.id,
+                            type: can.valueType,
+                            newValue: "false"
+                        };
+                        ChannelsService.writeChannel(channell, true);
+                    }
+                });
+            });
+
 
 
             $scope.interval = "";
             $interval.cancel($scope.interval);
             $scope.interval = $interval(function(){
-                ChannelsService.getAllChannels().then(async function(channels) {
-                    $scope.channels = await channels.records;
-                });
-                if ($scope.channels != undefined){
+                // ChannelsService.getAllChannels().then(async function(channels) {
+                //     $scope.channels = await channels.records;
+                // });
+                ChannelsService.getAllChannels().then((channels) => $scope.channels = channels.records);
+                if ($scope.channels !== undefined){
                     $scope.channels.forEach(function(channel){
                         // if (channel.id === "power_heatpump"){
                         //     textHeatPump = svg_document.getElementById("textHeatPump");
                         //     textHeatPump.textContent = channel.record.value + " kW";
                         // }
-                        if (channel.id === "arm1_x"){
-                            textPosArm1 = svg_document.getElementById("arm1_x");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm1_y"){
-                            textPosArm1 = svg_document.getElementById("arm1_y");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm1_z"){
-                            textPosArm1 = svg_document.getElementById("arm1_z");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm1_r"){
-                            textPosArm1 = svg_document.getElementById("arm1_r");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm1_l"){
-                            textPosArm1 = svg_document.getElementById("arm1_l");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                            objPosArm1 = svg_document.getElementById("arm1_rail_anim");
-                            moveArmFigAnim(objPosArm1, calculateReal(channel.record.value))
-                        }
-                        if (channel.id === "arm1_state"){
-                            objColorArm1 = svg_document.getElementById("arm1_state");
+                        if (channel.id === "HMI_Kruh_Indikace"){
+                            objColorArm1 = svg_document.getElementById("HMI_Kruh_Indikace");
                             objColorArm1.setAttribute("fill", selectRightColor(channel.record.value));
-                        }
-                        if (channel.id === "arm1_suction"){
-                            objColorArm1 = svg_document.getElementById("arm1_suction");
-                            objColorArm1.setAttribute("fill", selectRightColor(channel.record.value));
-                        }
-                        if (channel.id === "arm1_secure"){
-                            objColorArm1 = svg_document.getElementById("arm1_secure");
-                            objColorArm1.setAttribute("fill", selectRightColor(channel.record.value));
-                        }
-                        if (channel.id === "arm1_rail_state"){
-                            objColorArm1 = svg_document.getElementById("arm1_rail_state");
-                            objColorArm1.setAttribute("fill", selectRightColor(channel.record.value));
-                        }
-                        if (channel.id === "arm2_x"){
-                            textPosArm1 = svg_document.getElementById("arm2_x");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm2_y"){
-                            textPosArm1 = svg_document.getElementById("arm2_y");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm2_z"){
-                            textPosArm1 = svg_document.getElementById("arm2_z");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm2_r"){
-                            textPosArm1 = svg_document.getElementById("arm2_r");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm3_x"){
-                            textPosArm1 = svg_document.getElementById("arm3_x");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm3_y"){
-                            textPosArm1 = svg_document.getElementById("arm3_y");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm3_z"){
-                            textPosArm1 = svg_document.getElementById("arm3_z");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm3_r"){
-                            textPosArm1 = svg_document.getElementById("arm3_r");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
                         }
 
-                        // if (channel.id === "power_photovoltaics"){
-                        //     textPv = svg_document.getElementById("textPv");
-                        //     textPv.textContent = channel.record.value + " kW";
-                        // }
-                        // if (channel.id === "power_grid"){
-                        //     textGrid = svg_document.getElementById("textGrid");
-                        //     textGrid.textContent = channel.record.value + " kW";
-                        // }
                     });
                 }
             }, 500);
@@ -137,7 +90,7 @@
         if (boolean === true){
             return "#4cc046"
         }else{
-            return "#c05046"
+            return "#FF0000"
         }
     }
 

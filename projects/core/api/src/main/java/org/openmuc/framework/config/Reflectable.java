@@ -127,8 +127,8 @@ public abstract class Reflectable extends Configurable {
 
     public static boolean hasParameterTypes(Method method, Object... args) {
         if (method.getParameterCount() != args.length) {
-            logger.trace("Removing method \"{}\" with nonmatching amount of arguments: {}", method.getName(), 
-                    method.getParameterCount());
+            logger.trace("Removing method \"{}\" with nonmatching amount of arguments: {}. We are interested in methods with argument amount: {}", method.getName(),
+                    method.getParameterCount(), args.length);
             
             return false;
         }

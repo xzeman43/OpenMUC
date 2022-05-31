@@ -22,6 +22,7 @@
 package org.openmuc.framework.data;
 
 import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 public class IntValue extends NumberValue {
 
@@ -39,6 +40,11 @@ public class IntValue extends NumberValue {
         ByteBuffer.wrap(bytes).putInt(super.asInt());
         return bytes;
     }
+
+//    @Override
+//    public byte[] asByteArray() {
+//        return ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN).putInt(super.asInt()).array();
+//    }
 
     @Override
     public ValueType getValueType() {

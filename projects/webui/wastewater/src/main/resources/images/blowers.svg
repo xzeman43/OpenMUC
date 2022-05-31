@@ -23,7 +23,7 @@
 		.st9 {fill:#ffffff;font-family:Arial;font-size:1.99999em;font-weight:bold}
 		.st10 {fill:#ff0000;stroke:#303030;stroke-linecap:butt;stroke-width:0.749784}
 		.st11 {fill:#000000;font-family:Arial;font-size:4.99999em;font-weight:bold}
-		.st12 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+		.st12 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3;width:100%;height:auto}
 	]]>
 	</style>
 
@@ -43,9 +43,9 @@
 			</g>
 			<g id="shape62-6" v:mID="62" v:groupContext="shape" transform="translate(212.64,-475.254)">
 				<title>HMI_Ctverec_Dmychadlo_1</title>
-				<path d="M0 617.83 L44.99 617.83 L44.99 655.32 L0 655.32 L0 617.83 Z" class="st3"/>
+				<path id="HMI_Ctverec_Dmychadlo_1" d="M0 617.83 L44.99 617.83 L44.99 655.32 L0 655.32 L0 617.83 Z" fill="#FFFFFF" stroke="#000000"/>
 			</g>
-			<g id="shape64-8" v:mID="64" v:groupContext="shape" transform="translate(612.199,-102.348)">
+			<g id="HMI_Tlac_Uvod" v:mID="64" v:groupContext="shape" transform="translate(612.199,-102.348)">
 				<title>HMI_Tlac_Uvod</title>
 				<path d="M0 595.34 L224.94 595.34 L224.94 655.32 L0 655.32 L0 595.34 Z" class="st4"/>
 			</g>
@@ -53,7 +53,7 @@
 				<title>path359</title>
 				<path d="M0 595.34 L224.94 595.34 L224.94 655.32 L0 655.32 L0 595.34 Z" class="st4"/>
 			</g>
-			<g id="shape82-12" v:mID="82" v:groupContext="shape" transform="translate(612.199,-27.3672)">
+			<g id="back" v:mID="82" v:groupContext="shape" transform="translate(612.199,-27.3672)">
 				<title>HMI_Tlac_Zpet_Dmychadla</title>
 				<path d="M0 595.34 L224.94 595.34 L224.94 655.32 L0 655.32 L0 595.34 Z" class="st4"/>
 			</g>
@@ -152,7 +152,7 @@
 				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 				<v:textRect cx="23.9718" cy="639.734" width="47.96" height="31.1811"/>
 				<rect x="0" y="624.143" width="47.946" height="31.1811" class="st6"/>
-				<text x="7.29" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>00</text>			</g>
+				<text id="HMI_Text_Cykly" x="7.29" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/>00</text>			</g>
 			<g id="shape302-52" v:mID="302" v:groupContext="shape" transform="translate(339.165,-300.898)">
 				<title>List.302</title>
 				<desc>Min</desc>
@@ -160,7 +160,7 @@
 				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 				<v:textRect cx="38.3927" cy="639.734" width="76.8" height="31.1811"/>
 				<rect x="0" y="624.143" width="76.7893" height="31.1811" class="st6"/>
-				<text x="5.02" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>0000</text>			</g>
+				<text id="HMI_Text_DobaAerace_SBR" x="5.02" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/>0000</text>			</g>
 			<g id="shape303-55" v:mID="303" v:groupContext="shape" transform="translate(339.165,-258.378)">
 				<title>List.303</title>
 				<desc>Min</desc>
@@ -168,7 +168,7 @@
 				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 				<v:textRect cx="38.3927" cy="639.734" width="76.8" height="31.1811"/>
 				<rect x="0" y="624.143" width="76.7893" height="31.1811" class="st6"/>
-				<text x="5.02" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>0000</text>			</g>
+				<text id="HMI_Text_DobaSedi_SBR" x="5.02" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/>0000</text>			</g>
 			<g id="shape304-58" v:mID="304" v:groupContext="shape" transform="translate(339.638,-169.087)">
 				<title>List.304</title>
 				<desc>Min</desc>
@@ -176,7 +176,7 @@
 				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 				<v:textRect cx="38.3927" cy="639.734" width="76.8" height="31.1811"/>
 				<rect x="0" y="624.143" width="76.7893" height="31.1811" class="st6"/>
-				<text x="5.02" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>0000</text>			</g>
+				<text id="HMI_Text_DobaAerace_Kal" x="5.02" y="648.73" class="st8" v:langID="1029"><v:paragraph v:horizAlign="1"/>0000</text>			</g>
 			<g id="shape291-61" v:mID="291" v:groupContext="shape" transform="translate(16.0157,-421.37)">
 				<title>List.154</title>
 				<desc>Čerpací stanice:</desc>
@@ -185,7 +185,7 @@
 				<v:textRect cx="236.69" cy="639.734" width="473.41" height="31.1811"/>
 				<rect x="0" y="624.143" width="473.386" height="31.1811" class="st6"/>
 				<text x="6.55" y="648.73" class="st7" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>Počet cyklů aerace/sedimentace</text>			</g>
-			<g id="shape305-64" v:mID="305" v:groupContext="shape" transform="translate(612.354,-102.472)">
+			<g id="main" v:mID="305" v:groupContext="shape" transform="translate(612.354,-102.472)">
 				<title>List.171</title>
 				<desc>Úvodní obrazovka</desc>
 				<v:userDefs/>
@@ -193,7 +193,7 @@
 				<v:textRect cx="113.916" cy="625.56" width="227.84" height="59.5276"/>
 				<rect x="0" y="595.797" width="227.835" height="59.5276" class="st6"/>
 				<text x="10.56" y="632.76" class="st9" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>Úvodní obrazovka</text>			</g>
-			<g id="shape306-67" v:mID="306" v:groupContext="shape" transform="translate(611.291,-28.7719)">
+			<g id="back" v:mID="306" v:groupContext="shape" transform="translate(611.291,-28.7719)">
 				<title>List.173</title>
 				<desc>Zpět</desc>
 				<v:userDefs/>
@@ -201,9 +201,9 @@
 				<v:textRect cx="113.916" cy="625.56" width="227.84" height="59.5276"/>
 				<rect x="0" y="595.797" width="227.835" height="59.5276" class="st6"/>
 				<text x="88.59" y="632.76" class="st9" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>Zpět</text>			</g>
-			<g id="shape35-70" v:mID="35" v:groupContext="shape" transform="translate(784.648,-529.723)">
+			<g v:mID="35" v:groupContext="shape" transform="translate(784.648,-529.723)">
 				<title>HMI_Kruh_Indikace</title>
-				<path d="M74.98 617.83 C74.98 619.06 74.92 620.29 74.8 621.51 C74.68 622.73 74.5 623.94 74.26 625.15 C74.02 626.35
+				<path id="HMI_Kruh_Indikace" d="M74.98 617.83 C74.98 619.06 74.92 620.29 74.8 621.51 C74.68 622.73 74.5 623.94 74.26 625.15 C74.02 626.35
 							 73.72 627.54 73.37 628.71 C73.01 629.89 72.6 631.05 72.13 632.18 C71.66 633.31 71.13 634.42 70.55 635.5
 							 C69.97 636.59 69.34 637.64 68.66 638.66 C67.98 639.68 67.25 640.67 66.47 641.62 C65.69 642.57 64.87
 							 643.47 64 644.34 C63.13 645.21 62.22 646.04 61.27 646.81 C60.32 647.59 59.34 648.32 58.32 649 C57.3
@@ -226,7 +226,7 @@
 							 C59.34 587.34 60.32 588.07 61.27 588.86 C62.22 589.63 63.13 590.46 64 591.32 C64.87 592.19 65.69 593.1
 							 66.47 594.05 C67.25 595 67.98 595.98 68.66 597 C69.34 598.03 69.97 599.08 70.55 600.16 C71.13 601.24
 							 71.66 602.35 72.13 603.49 C72.6 604.62 73.01 605.78 73.37 606.95 C73.72 608.13 74.02 609.32 74.26 610.52
-							 C74.5 611.72 74.68 612.94 74.8 614.16 C74.92 615.38 74.98 616.61 74.98 617.83 Z" class="st10"/>
+							 C74.5 611.72 74.68 612.94 74.8 614.16 C74.92 615.38 74.98 616.61 74.98 617.83 Z" fill="#FF0000" stroke="#000000"/>
 			</g>
 			<g id="shape290-72" v:mID="290" v:groupContext="shape" transform="translate(24.5197,-534.756)">
 				<title>List.153</title>
@@ -238,11 +238,11 @@
 				<text x="5.43" y="637.89" class="st11" v:langID="1029"><v:paragraph v:horizAlign="1"/><v:tabList/>Stav dmychadel</text>			</g>
 			<g id="shape88-75" v:mID="88" v:groupContext="shape" transform="translate(447.734,-475.254)">
 				<title>HMI_Ctverec_Dmychadlo_2</title>
-				<path d="M0 617.83 L44.98 617.83 L44.98 655.32 L0 655.32 L0 617.83 Z" class="st3"/>
+				<path id="HMI_Ctverec_Dmychadlo_2" d="M0 617.83 L44.98 617.83 L44.98 655.32 L0 655.32 L0 617.83 Z" fill="#FFFFFF" stroke="#000000"/>
 			</g>
 			<g id="shape63-77" v:mID="63" v:groupContext="shape" transform="translate(687.077,-475.254)">
 				<title>HMI_Ctverec_Dmychadlo_3</title>
-				<path d="M0 617.83 L44.99 617.83 L44.99 655.32 L0 655.32 L0 617.83 Z" class="st3"/>
+				<path id="HMI_Ctverec_Dmychadlo_3" d="M0 617.83 L44.99 617.83 L44.99 655.32 L0 655.32 L0 617.83 Z" fill="#FFFFFF" stroke="#000000"/>
 			</g>
 		</g>
 	</g>

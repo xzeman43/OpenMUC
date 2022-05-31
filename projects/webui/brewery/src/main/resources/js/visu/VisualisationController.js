@@ -22,7 +22,7 @@
                 var v3 = "OFF";
                 var v4 = "OFF";
 
-                if ($scope.channels != undefined){
+                if ($scope.channels !== undefined){
                     $scope.channels.forEach(function(channel){
                         // if (channel.id === "power_heatpump"){
                         //     textHeatPump = svg_document.getElementById("textHeatPump");
@@ -91,16 +91,44 @@
                             }else{
                                 text.textContent = "OFF";
                             }
-                        } "valve1_
+                        }
+                        if (channel.id === "m"){
+                            text = svg_document.getElementById("m");
+                            if (channel.record.value === true){
+                                text.textContent = "ON";
+                            }else{
+                                text.textContent = "OFF";
+                            }
+                        }
                         if (channel.id === "h1"){
                             text = svg_document.getElementById("h1");
-                            var value = channel.record.value.toString().substring(0,4) + " L";
+                            var value = (channel.record.value/10).toString().substring(0,4) + " L";
                             text.textContent = value;
                         }
                         if (channel.id === "h2"){
                             text = svg_document.getElementById("h2");
-                            var value = channel.record.value.toString()
+                            var value = (channel.record.value/10).toString()
                             text.textContent = value.substring(0,4) + " L";
+                        }
+                        if (channel.id === "t1e1_register"){
+                            text = svg_document.getElementById("e1");
+                            var value = (channel.record.value/10).toString()
+                            text.textContent = value.substring(0,4) + " W";
+                        }
+                        if (channel.id === "t2e2_register"){
+                            text = svg_document.getElementById("e2");
+                            var value = (channel.record.value/10).toString()
+                            text.textContent = value.substring(0,4) + " W";
+                        }
+                        if (channel.id === "sensor1"){
+                            text = svg_document.getElementById("t1");
+                            var value = (channel.record.value/10).toString()
+                            text.textContent = value.substring(0,4) + " °C";
+                        }
+                        if (channel.id === "sensor2"){
+                            text = svg_document.getElementById("t2");
+                            var value = (channel.record.value/10).toString()
+                            text.textContent = value.substring(0,4) + " °C";
                         }
                         if (channel.id === "valve1_1"){
                             text = svg_document.getElementById("v1_1");

@@ -1128,18 +1128,18 @@
 						 -0.363009 -0.13146 L6.43 572.8 a0.566929 0.566929 -180 0 0 -0.363009 0.13146 L1.2 576.99 a0.566929 0.566929
 						 -180 0 0 0.363009 1.0024 Z" class="st16"/>
 		</g>
-		<g id="shape1345-329" v:mID="1345" v:groupContext="shape" transform="translate(735.177,-199.313)">
+		<g id="shape1345-329" v:mID="1345" v:groupContext="shape" transform="translate(731.177,-199.313)">
 			<title>Sheet.1345</title>
 			<desc>Teplota (T1):</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="30.0155" cy="573.522" width="60.04" height="8.94572"/>
 			<rect x="0" y="569.049" width="60.0309" height="8.94572" class="st36"/>
 			<text x="4" y="576.22" class="st37" v:langID="1029"><v:paragraph/><v:tabList/>Teplota (T1):  </text>		</g>
-		<g id="shape1346-332" v:mID="1346" v:groupContext="shape" transform="translate(737.806,-172.384)">
+		<g id="shape1346-332" v:mID="1346" v:groupContext="shape" transform="translate(732.606,-172.384)">
 			<title>Sheet.1346</title>
 			<desc>Objem (H1):</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="31.5354" cy="572.193" width="63.08" height="11.6035"/>
+			<v:textRect cx="31.5354" cy="572.193" width="63.08" height="11W.6035"/>
 			<rect x="0" y="566.392" width="63.0709" height="11.6035" class="st36"/>
 			<text x="4" y="574.89" class="st37" v:langID="1029"><v:paragraph/><v:tabList/>Objem (H1):</text>		</g>
 		<g id="shape1349-335" v:mID="1349" v:groupContext="shape" transform="translate(162.955,-301.473)">
@@ -1478,13 +1478,13 @@
 						 -0.400375 -0.165546 L3.77 574.47 a0.566929 0.566929 -180 0 0 -0.400375 0.165546 L0.97 577.03 a0.566929 0.566929
 						 -180 0 0 0.400375 0.968313 Z" class="st1"/>
 		</g>
-		<g id="shape1392-414" v:mID="1392" v:groupContext="shape" transform="translate(740.19,-180.888)">
+		<g id="shape1392-414" v:mID="1392" v:groupContext="shape" transform="translate(726.59,-180.888)">
 			<title>Sheet.1392</title>
-			<desc>Ohřev (E1):</desc>
+			<desc>Míchadlo (M):</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="30.6425" cy="572.193" width="61.29" height="11.6035"/>
 			<rect x="0" y="566.392" width="61.285" height="11.6035" class="st36"/>
-			<text x="4" y="574.89" class="st37" v:langID="1029"><v:paragraph/><v:tabList/>Ohřev (E1):  </text>		</g>
+			<text x="4" y="574.89" class="st37" v:langID="1029"><v:paragraph/><v:tabList/>Míchadlo (M):  </text>		</g>
 		<g id="shape1396-417" v:mID="1396" v:groupContext="shape" transform="translate(349.009,-216.344)">
 			<title>Sheet.1396</title>
 			<desc>Rmutovací pánev</desc>
@@ -1499,7 +1499,7 @@
 			<v:textRect cx="52.9443" cy="565.495" width="105.89" height="25.0007"/>
 			<rect x="0" y="552.994" width="105.889" height="25.0007" class="st36"/>
 			<text x="4" y="573.19" class="st50" v:langID="1029"><v:paragraph/><v:tabList/>Chmelovar</text>		</g>
-		<g id="shape1393-423" v:mID="1393" v:groupContext="shape" transform="translate(370.269,-199.801)">
+		<g id="shape1393-423" v:mID="1393" v:groupContext="shape" transform="translate(370.969,-199.801)">
 			<title>Sheet.1393</title>
 			<desc>Teplota (T2):</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
@@ -1737,13 +1737,13 @@
 			</v:userDefs>
 			<path d="M0 577.49 a21.4016 0.504358 0 0 1 42.8031 0 a21.4016 0.504358 0 0 1 -42.8031 0 Z" class="st57"/>
 		</g>
-		<g id="shape1478-522" v:mID="1478" v:groupContext="shape" transform="translate(731.686,-189.392)">
+		<g id="shape1478-522" v:mID="1478" v:groupContext="shape" transform="translate(735.186,-189.392)">
 			<title>Sheet.1478</title>
-			<desc>Míchadlo (M):</desc>
+			<desc>Ohřev (E1):</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="35.433" cy="572.193" width="70.87" height="11.6035"/>
 			<rect x="0" y="566.392" width="70.8661" height="11.6035" class="st36"/>
-			<text x="4" y="574.89" class="st37" v:langID="1029"><v:paragraph/><v:tabList/>Míchadlo (M):  </text>		</g>
+			<text x="4" y="574.89" class="st37" v:langID="1029"><v:paragraph/><v:tabList/>Ohřev (E1):  </text>		</g>
 		<g id="group1491-525" transform="translate(157.588,-247.852)" v:mID="1491" v:groupContext="group">
 			<title>Sheet.1491</title>
 			<g id="shape1184-526" v:mID="1184" v:groupContext="shape">
@@ -2078,14 +2078,14 @@
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="17.7571" cy="573.522" width="35.52" height="8.94572"/>
 			<rect x="0" y="569.049" width="35.5142" height="8.94572" class="st36"/>
-			<text x="4" y="576.52" class="st51" v:langID="1033" id="t2"><v:paragraph/><v:tabList/>30 °C </text>		</g>
+			<text x="4" y="576.52" class="st51" v:langID="1033" id="t2">30 °C </text>		</g>
 		<g id="shape1514-626" v:mID="1514" v:groupContext="shape" transform="translate(431.541,-188.053)">
 			<title>Sheet.1514</title>
 			<desc>700 W</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="19.9624" cy="572.193" width="39.93" height="11.6035"/>
 			<rect x="0" y="566.392" width="39.9249" height="11.6035" class="st36"/>
-			<text x="4" y="575.19" class="st51" v:langID="1029" id="e2"><v:paragraph/><v:tabList/>700<tspan class="st41" v:langID="1033"> </tspan>W</text>		</g>
+			<text x="4" y="575.19" class="st51" v:langID="1029" id="e2">700 W</text>		</g>
 		<g id="shape1515-630" v:mID="1515" v:groupContext="shape" transform="translate(431.73,-177.433)">
 			<title>Sheet.1515</title>
 			<desc>50 l</desc>
@@ -2099,21 +2099,21 @@
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="21.4163" cy="573.522" width="42.84" height="8.94572"/>
 			<rect x="0" y="569.049" width="42.8326" height="8.94572" class="st36"/>
-			<text x="4" y="576.22" class="st37" v:langID="1029"><v:paragraph/><v:tabList/>30 °C</text>		</g>
+			<text id="t1" x="4" y="576.22" class="st37" v:langID="1029">30 °C</text>		</g>
 		<g id="shape1518-637" v:mID="1518" v:groupContext="shape" transform="translate(787.495,-189.392)">
 			<title>Sheet.1518</title>
 			<desc>700 W</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="22.2815" cy="572.193" width="44.57" height="11.6035"/>
 			<rect x="0" y="566.392" width="44.563" height="11.6035" class="st36"/>
-			<text x="4" y="574.89" class="st37" v:langID="1029"><v:paragraph/><v:tabList/>700<tspan class="st41" v:langID="1033"> </tspan>W</text>		</g>
+			<text id="e1" x="4" y="574.89" class="st37" v:langID="1029"><v:paragraph/><v:tabList/>700<tspan class="st41" v:langID="1033"> </tspan>W</text>		</g>
 		<g id="shape1519-641" v:mID="1519" v:groupContext="shape" transform="translate(787.115,-180.888)">
 			<title>Sheet.1519</title>
 			<desc>OFF</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="24.816" cy="572.193" width="49.64" height="11.6035"/>
 			<rect x="0" y="566.392" width="49.6321" height="11.6035" class="st36"/>
-			<text x="4" y="574.89" class="st37" v:langID="1029"><v:paragraph/><v:tabList/>OFF</text>		</g>
+			<text id="m" x="4" y="574.89" class="st37" v:langID="1029">OFF</text>		</g>
 		<g id="shape1520-644" v:mID="1520" v:groupContext="shape" transform="translate(787.063,-172.384)">
 			<title>Sheet.1520</title>
 			<desc>50 l</desc>

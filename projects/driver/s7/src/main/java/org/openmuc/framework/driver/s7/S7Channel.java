@@ -21,6 +21,7 @@
 package org.openmuc.framework.driver.s7;
 
 import org.openmuc.framework.config.option.annotation.Option;
+import org.openmuc.framework.data.ValueType;
 import org.openmuc.framework.driver.DriverChannel;
 
 import static org.openmuc.framework.config.option.annotation.OptionType.ADDRESS;
@@ -36,6 +37,14 @@ public class S7Channel extends DriverChannel {
         return place;
     }
 
+//    public int getLength() {
+//        return length;
+//    }
+
+    public int getDbNum() {
+        return dbNum;
+    }
+
     @Option(id = "area",
             type = ADDRESS,
             name = "Area",
@@ -46,9 +55,44 @@ public class S7Channel extends DriverChannel {
     @Option(id = "place",
             type = SETTING,
             name="Value location",
-            description="Value location to read. for digital inputs in format: Ix.x, for digital outputs Ox.x",
+            description="Value location to read. for digital inputs in format: Ix.x, for digital outputs Ox.x .",
             mandatory = false)
     private String place;
+
+//    @Option(id = "length",
+//            type = SETTING,
+//            name="Datatype length",
+//            description="Length in bytes of the datatype of the DB's stored value. Needed when DB reading is selected.",
+//            mandatory = false)
+//    private int length;
+
+    @Option(id = "dbnum",
+            type = SETTING,
+            name="Database number",
+            description="Number of the database where the data is stored. Needed when DB reading is selected.",
+            mandatory = false)
+    private int dbNum;
+
+    public int getValueLength(ValueType type) {
+        switch (type) {
+            case BOOLEAN:
+                return 1;
+            case BYTE:
+                return 1;
+            case SHORT:
+                return 2;
+            case INTEGER:
+                return 4;
+            case LONG:
+                return 4;
+            case FLOAT:
+                return 4;
+            case DOUBLE:
+                return 4;
+            default:
+                return 1;
+        }
+    }
 
 //    public Record createRecord(Byte buffer) {
 //        long timestamp = System.currentTimeMillis();

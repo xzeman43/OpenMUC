@@ -40,7 +40,12 @@ public class DeviceAddress {
 
         String remoteHost = deviceAddresses[0];
         try {
-            address = InetAddress.getByName(remoteHost);
+            if(validate(remoteHost)) {
+                address = InetAddress.getByName(remoteHost);
+            }else{
+                //TODO recheck if this is the correct way to throw the exception
+                throw new UnknownHostException("Unknown host: " + remoteHost);
+            }
         } catch (UnknownHostException e) {
             throw new ConnectionException("Unknown host: " + remoteHost, e);
         }
@@ -60,6 +65,12 @@ public class DeviceAddress {
 
     public int getRemotePort() {
         return remotePort;
+    }
+
+    private static boolean validate(final String ip) {
+        String PATTERN = "^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.){3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)$";
+
+        return ip.matches(PATTERN);
     }
 
 }

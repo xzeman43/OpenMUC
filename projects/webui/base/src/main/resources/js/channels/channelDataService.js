@@ -67,6 +67,11 @@
             return $http(configReq(channel)).then(response => response.data.configs);
         };
 
+        // this.getChannelData = async function (channel) {
+        //     var dataResponse = await $http(configReq(channel));
+        //     return dataResponse.data.configs;
+        // };
+
         this.getChannelDataValues = function (channel) {
             var req = {
                 method: 'GET',

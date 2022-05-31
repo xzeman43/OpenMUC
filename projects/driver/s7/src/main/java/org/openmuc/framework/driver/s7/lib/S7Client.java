@@ -687,6 +687,7 @@ public class S7Client
                     {
                         if ((Length-25==SizeRequested) && (PDU[21]==(byte)0xFF))
                         {
+                            //TODO there was a Offset instead of START, why?
                             System.arraycopy(PDU, 25, Data, Start, SizeRequested);
                             Offset+=SizeRequested;
                         }
@@ -774,8 +775,9 @@ public class S7Client
             // Length
             S7.SetWordAt(PDU,33,Length);
             
-            // Copies the Data
-            System.arraycopy(Data, Offset, PDU, 35, DataSize);
+            // Copies the Data'
+            //TODO there was a Offset instead of START, why?
+            System.arraycopy(Data, Start, PDU, 35, DataSize);
                         
             SendPacket(PDU, IsoSize);
             if (LastError==0)
