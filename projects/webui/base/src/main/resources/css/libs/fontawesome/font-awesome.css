@@ -68,6 +68,11 @@
 .pull-right {
   float: right;
 }
+.stretch {
+  display:flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
 .pull-left {
   float: left;
 }

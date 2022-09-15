@@ -25,6 +25,7 @@
         };
 
         this.currentUsername = function() {
+            console.log(userName);
             return userName;
         };
 
@@ -39,6 +40,11 @@
 
         this.isLoggedIn = function () {
             auth = $cookies.get("authentication")
+            if (auth !== null && auth !== undefined) {
+                var login = atob(auth.slice(6))
+                var split = login.split(":")
+                userName = split[0]
+            }
             return auth != null;
         };
 

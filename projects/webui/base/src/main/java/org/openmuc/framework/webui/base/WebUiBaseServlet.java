@@ -78,23 +78,30 @@ public class WebUiBaseServlet extends HttpServlet {
                 resp.sendError(401);
                 return;
             }
+            String username = req.getHeader("username");
+            if (username != null) {
+                JsonArray jApplications = webUiBase.getCurrentUserApplications(username);
+//            JsonArray jApplications = new JsonArray();
+//            for (WebUiPluginService webUiApp : webUiBase.pluginsByAlias.values()) {
+//                JsonObject app = new JsonObject();
+//                app.addProperty("alias", webUiApp.getAlias());
+//                app.addProperty("name", webUiApp.getName());
+//                jApplications.add(app);
+//            }
 
-            JsonArray jApplications = new JsonArray();
-            for (WebUiPluginService webUiApp : webUiBase.pluginsByAlias.values()) {
-                JsonObject app = new JsonObject();
-                app.addProperty("alias", webUiApp.getAlias());
-                app.addProperty("name", webUiApp.getName());
-                jApplications.add(app);
+
+                String applicationsStr = jApplications.toString();
+
+                if (logger.isDebugEnabled()) {
+                    logger.debug(applicationsStr);
+                }
+
+                resp.setContentType("application/json");
+                resp.getWriter().println(applicationsStr);
+            }else{
+                req.getSession().invalidate(); // invalidate the session
+                resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             }
-
-            String applicationsStr = jApplications.toString();
-
-            if (logger.isDebugEnabled()) {
-                logger.debug(applicationsStr);
-            }
-
-            resp.setContentType("application/json");
-            resp.getWriter().println(applicationsStr);
             return;
         }
 
@@ -140,11 +147,11 @@ public class WebUiBaseServlet extends HttpServlet {
 
     private void updateView(String user) {
         if (!authService.isUserAdmin(user) && isSensitiveMode) {
-            hideSensitiveContent();
+//            hideSensitiveContent();
             isSensitiveMode = false;
         }
         else if (authService.isUserAdmin(user) && !isSensitiveMode) {
-            showSensitiveContent();
+//            showSensitiveContent();
             isSensitiveMode = true;
         }
     }

@@ -1,12 +1,21 @@
 (function(){
 
-	var injectParams = ['$http', 'SETTINGS'];
+	var injectParams = ['$http', 'SETTINGS', 'AuthService'];
 
-	var AvailableAppsService = function($http, SETTINGS) {
+	var AvailableAppsService = function($http, SETTINGS, AuthService) {
     	this.getAll = function() {
-    		return $http.get(SETTINGS.APPS_URL).then(function(response){
-				return response.data;
-			});
+			let user = AuthService.currentUsername();
+
+			var req = {
+				method: 'GET',
+				url: SETTINGS.APPS_URL,
+				headers: {
+					'username': user
+				}
+			};
+			return $http(req).then(function(response){
+					return response.data;
+				});
     	}
     };
 

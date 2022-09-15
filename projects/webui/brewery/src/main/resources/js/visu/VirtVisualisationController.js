@@ -2,7 +2,7 @@
 
     var injectParams = ['$scope', '$interval', 'ChannelsService'];
 
-    var VisualisationController = function($scope, $interval, ChannelsService) {
+    var VirtVisualisationController = function($scope, $interval, ChannelsService) {
         var svg_document;
 
         display_visualisation = function() {
@@ -295,8 +295,8 @@
 
     };
 
-    VisualisationController.$inject = injectParams;
+    VirtVisualisationController.$inject = injectParams;
 
-    angular.module('openmuc.brewery-visu').controller('VisualisationController', VisualisationController);
+    angular.module('openmuc.brewery-visu').controller('VirtVisualisationController', VirtVisualisationController);
 
 })();

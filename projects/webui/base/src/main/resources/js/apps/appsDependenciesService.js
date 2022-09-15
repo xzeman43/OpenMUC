@@ -12,7 +12,9 @@
 					files.push(value.alias + '/js/app.js');
 					files.push(value.alias + '/js/app.routes.js');
 				});
-
+				if (files.length === 0){
+					return;
+				}
 	            return $ocLazyLoad.load(
 	                    {
 	                        name: "openmuc",

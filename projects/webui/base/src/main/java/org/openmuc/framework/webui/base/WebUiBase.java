@@ -20,10 +20,13 @@
  */
 package org.openmuc.framework.webui.base;
 
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import org.openmuc.framework.authentication.AuthenticationService;
 import org.openmuc.framework.webui.spi.WebUiPluginService;
 import org.osgi.framework.BundleContext;
@@ -161,4 +164,31 @@ public final class WebUiBase {
             httpService.unregister("/" + plugin.getAlias() + "/" + alias);
         }
     }
+
+    protected JsonArray getCurrentUserApplications(String username) {
+
+        String group = authService.getUsersGroup(username);
+        JsonArray jApplications = new JsonArray();
+
+        if (group.equalsIgnoreCase("normal")) {
+            for (WebUiPluginService webUiApp : pluginsByAlias.values()) {
+                if (!Arrays.asList("channelaccesstool", "channelconfigurator", "userconfigurator", "mediaviewer", "dataplotter", "dataexporter").contains(webUiApp.getAlias())) {
+                    JsonObject app = new JsonObject();
+                    app.addProperty("alias", webUiApp.getAlias());
+                    app.addProperty("name", webUiApp.getName());
+                    jApplications.add(app);
+                }
+            }
+
+        }else if(group.equalsIgnoreCase("adminGrp")){
+            for (WebUiPluginService webUiApp : pluginsByAlias.values()) {
+                JsonObject app = new JsonObject();
+                app.addProperty("alias", webUiApp.getAlias());
+                app.addProperty("name", webUiApp.getName());
+                jApplications.add(app);
+            }
+        }
+        return jApplications;
+    }
+
 }

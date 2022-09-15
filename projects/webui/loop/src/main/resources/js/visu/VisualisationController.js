@@ -35,105 +35,106 @@
                         //     textHeatPump = svg_document.getElementById("textHeatPump");
                         //     textHeatPump.textContent = channel.record.value + " kW";
                         // }
-                        if (channel.id === "arm1_x"){
-                            textPosArm1 = svg_document.getElementById("arm1_x");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
+                        if(channel.record.value != undefined) {
+                            if (channel.id === "arm1_x") {
+                                textPosArm1 = svg_document.getElementById("arm1_x");
+                                textPosArm1.textContent = calculateReal(channel.record.value);
+                            }
+                            if (channel.id === "arm1_y") {
+                                textPosArm1 = svg_document.getElementById("arm1_y");
+                                textPosArm1.textContent = calculateReal(channel.record.value);
+                            }
+                            if (channel.id === "arm1_z") {
+                                textPosArm1 = svg_document.getElementById("arm1_z");
+                                textPosArm1.textContent = calculateReal(channel.record.value);
+                            }
+                            if (channel.id === "arm1_r") {
+                                textPosArm1 = svg_document.getElementById("arm1_r");
+                                textPosArm1.textContent = calculateReal(channel.record.value);
+                            }
+                            if (channel.id === "arm1_l") {
+                                textPosArm1 = svg_document.getElementById("arm1_l");
+                                textPosArm1.textContent = calculateReal(channel.record.value);
+                                objPosArm1 = svg_document.getElementById("arm1_rail_anim");
+                                moveArmFigAnim(objPosArm1, calculateReal(channel.record.value))
+                            }
+                            if (channel.id === "arm1_state") {
+                                objColorArm1 = svg_document.getElementById("arm1_state");
+                                objColorArm1.setAttribute("fill", selectRightStateColor(channel.record.value));
+                            }
+                            if (channel.id === "arm1_suction") {
+                                objColorArm1 = svg_document.getElementById("arm1_suction");
+                                objColorArm1.setAttribute("fill", selectRightColor(channel.record.value));
+                            }
+                            if (channel.id === "arm1_secure") {
+                                objColorArm1 = svg_document.getElementById("arm1_secure");
+                                objColorArm1.setAttribute("fill", selectRightColor(channel.record.value));
+                            }
+                            if (channel.id === "arm1_rail_state") {
+                                objColorArm1 = svg_document.getElementById("arm1_rail_state");
+                                objColorArm1.setAttribute("fill", selectRightStateColor(channel.record.value));
+                            }
+                            if (channel.id === "arm2_x") {
+                                textPosArm1 = svg_document.getElementById("arm2_x");
+                                textPosArm1.textContent = calculateReal(channel.record.value);
+                            }
+                            if (channel.id === "arm2_y") {
+                                textPosArm1 = svg_document.getElementById("arm2_y");
+                                textPosArm1.textContent = calculateReal(channel.record.value);
+                            }
+                            if (channel.id === "arm2_z") {
+                                textPosArm1 = svg_document.getElementById("arm2_z");
+                                textPosArm1.textContent = calculateReal(channel.record.value);
+                            }
+                            if (channel.id === "arm2_r") {
+                                textPosArm1 = svg_document.getElementById("arm2_r");
+                                textPosArm1.textContent = calculateReal(channel.record.value);
+                            }
+                            if (channel.id === "arm2_state") {
+                                objColorArm1 = svg_document.getElementById("arm2_state");
+                                objColorArm1.setAttribute("fill", selectRightStateColor(channel.record.value));
+                            }
+                            if (channel.id === "arm2_suction") {
+                                objColorArm1 = svg_document.getElementById("arm2_suction");
+                                objColorArm1.setAttribute("fill", selectRightColor(channel.record.value));
+                            }
+                            if (channel.id === "arm2_secure") {
+                                objColorArm1 = svg_document.getElementById("arm2_secure");
+                                objColorArm1.setAttribute("fill", selectRightColor(channel.record.value));
+                            }
+                            if (channel.id === "arm3_x") {
+                                textPosArm1 = svg_document.getElementById("arm3_x");
+                                textPosArm1.textContent = calculateReal(channel.record.value);
+                            }
+                            if (channel.id === "arm3_y") {
+                                textPosArm1 = svg_document.getElementById("arm3_y");
+                                textPosArm1.textContent = calculateReal(channel.record.value);
+                            }
+                            if (channel.id === "arm3_z") {
+                                textPosArm1 = svg_document.getElementById("arm3_z");
+                                textPosArm1.textContent = calculateReal(channel.record.value);
+                            }
+                            if (channel.id === "arm3_r") {
+                                textPosArm1 = svg_document.getElementById("arm3_r");
+                                textPosArm1.textContent = calculateReal(channel.record.value);
+                            }
+                            if (channel.id === "arm3_state") {
+                                objColorArm1 = svg_document.getElementById("arm3_state");
+                                objColorArm1.setAttribute("fill", selectRightStateColor(channel.record.value));
+                            }
+                            if (channel.id === "arm3_suction") {
+                                objColorArm1 = svg_document.getElementById("arm3_suction");
+                                objColorArm1.setAttribute("fill", selectRightColor(channel.record.value));
+                            }
+                            if (channel.id === "arm3_secure") {
+                                objColorArm1 = svg_document.getElementById("arm3_secure");
+                                objColorArm1.setAttribute("fill", selectRightColor(channel.record.value));
+                            }
+                            if (channel.id === "arm3_conveyor") {
+                                objColorArm1 = svg_document.getElementById("arm3_conveyor");
+                                objColorArm1.setAttribute("fill", selectRightStateColor(channel.record.value));
+                            }
                         }
-                        if (channel.id === "arm1_y"){
-                            textPosArm1 = svg_document.getElementById("arm1_y");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm1_z"){
-                            textPosArm1 = svg_document.getElementById("arm1_z");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm1_r"){
-                            textPosArm1 = svg_document.getElementById("arm1_r");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm1_l"){
-                            textPosArm1 = svg_document.getElementById("arm1_l");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                            objPosArm1 = svg_document.getElementById("arm1_rail_anim");
-                            moveArmFigAnim(objPosArm1, calculateReal(channel.record.value))
-                        }
-                        if (channel.id === "arm1_state"){
-                            objColorArm1 = svg_document.getElementById("arm1_state");
-                            objColorArm1.setAttribute("fill", selectRightStateColor(channel.record.value));
-                        }
-                        if (channel.id === "arm1_suction"){
-                            objColorArm1 = svg_document.getElementById("arm1_suction");
-                            objColorArm1.setAttribute("fill", selectRightColor(channel.record.value));
-                        }
-                        if (channel.id === "arm1_secure"){
-                            objColorArm1 = svg_document.getElementById("arm1_secure");
-                            objColorArm1.setAttribute("fill", selectRightColor(channel.record.value));
-                        }
-                        if (channel.id === "arm1_rail_state"){
-                            objColorArm1 = svg_document.getElementById("arm1_rail_state");
-                            objColorArm1.setAttribute("fill", selectRightStateColor(channel.record.value));
-                        }
-                        if (channel.id === "arm2_x"){
-                            textPosArm1 = svg_document.getElementById("arm2_x");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm2_y"){
-                            textPosArm1 = svg_document.getElementById("arm2_y");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm2_z"){
-                            textPosArm1 = svg_document.getElementById("arm2_z");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm2_r"){
-                            textPosArm1 = svg_document.getElementById("arm2_r");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm2_state"){
-                            objColorArm1 = svg_document.getElementById("arm2_state");
-                            objColorArm1.setAttribute("fill", selectRightStateColor(channel.record.value));
-                        }
-                        if (channel.id === "arm2_suction"){
-                            objColorArm1 = svg_document.getElementById("arm2_suction");
-                            objColorArm1.setAttribute("fill", selectRightColor(channel.record.value));
-                        }
-                        if (channel.id === "arm2_secure"){
-                            objColorArm1 = svg_document.getElementById("arm2_secure");
-                            objColorArm1.setAttribute("fill", selectRightColor(channel.record.value));
-                        }
-                        if (channel.id === "arm3_x"){
-                            textPosArm1 = svg_document.getElementById("arm3_x");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm3_y"){
-                            textPosArm1 = svg_document.getElementById("arm3_y");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm3_z"){
-                            textPosArm1 = svg_document.getElementById("arm3_z");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm3_r"){
-                            textPosArm1 = svg_document.getElementById("arm3_r");
-                            textPosArm1.textContent = calculateReal(channel.record.value);
-                        }
-                        if (channel.id === "arm3_state"){
-                            objColorArm1 = svg_document.getElementById("arm3_state");
-                            objColorArm1.setAttribute("fill", selectRightStateColor(channel.record.value));
-                        }
-                        if (channel.id === "arm3_suction"){
-                            objColorArm1 = svg_document.getElementById("arm3_suction");
-                            objColorArm1.setAttribute("fill", selectRightColor(channel.record.value));
-                        }
-                        if (channel.id === "arm3_secure"){
-                            objColorArm1 = svg_document.getElementById("arm3_secure");
-                            objColorArm1.setAttribute("fill", selectRightColor(channel.record.value));
-                        }
-                        if (channel.id === "arm3_conveyor"){
-                            objColorArm1 = svg_document.getElementById("arm3_conveyor");
-                            objColorArm1.setAttribute("fill", selectRightStateColor(channel.record.value));
-                        }
-
                         // if (channel.id === "power_photovoltaics"){
                         //     textPv = svg_document.getElementById("textPv");
                         //     textPv.textContent = channel.record.value + " kW";
@@ -198,6 +199,6 @@
 
     VisualisationController.$inject = injectParams;
 
-    angular.module('openmuc.openmuc-visu').controller('VisualisationController', VisualisationController);
+    angular.module('openmuc.loop-visu').controller('VisualisationController', VisualisationController);
 
 })();

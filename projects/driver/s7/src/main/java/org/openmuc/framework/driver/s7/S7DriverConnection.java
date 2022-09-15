@@ -78,7 +78,7 @@ public class S7DriverConnection extends DriverDevice {
 
     private static long Elapsed;
     private static byte[] Buffer = new byte[65536]; // 64K buffer (maximum for S7400 systems)
-    private static final S7Client Client = new S7Client();
+    private final S7Client Client = new S7Client();
     private static int ok=0;
     private static int ko=0;
     private static String IpAddress = "192.168.50.101";
@@ -139,8 +139,8 @@ public class S7DriverConnection extends DriverDevice {
         logger.info("Connection result: " + Result);
         if (Result==0)
         {
-            logger.info("Connected to   : " + IpAddress + " (Rack=" + Rack + ", Slot=" + Slot+ ")");
-            System.out.println("Connected to   : " + IpAddress + " (Rack=" + Rack + ", Slot=" + Slot+ ")");
+            logger.info("Connected to   : " + address + " (Rack=" + rack + ", Slot=" + slot+ ")");
+            System.out.println("Connected to   : " + address + " (Rack=" + rack + ", Slot=" + slot+ ")");
             logger.info("PDU negotiated : " + Client.PDULength()+" bytes");
             System.out.println("PDU negotiated : " + Client.PDULength()+" bytes");
         }

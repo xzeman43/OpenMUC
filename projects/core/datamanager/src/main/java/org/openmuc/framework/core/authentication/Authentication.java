@@ -244,6 +244,13 @@ public class Authentication implements AuthenticationService {
 
     }
 
+    @Override
+    public String getUsersGroup(String userName) {
+        User user = userAdmin.getUser("name", userName);
+
+        return user.getProperties().get("group").toString();
+    }
+
     @Reference
     protected void setUserAdmin(UserAdmin userAdmin) {
         this.userAdmin = userAdmin;

@@ -106,6 +106,10 @@
                      <span class="flag flag-de"></span>
                      <span class="dropdown-label">{{ 'BUTTON_LANG_DE' | translate }}</span>
                    </span>
+                   <span ng-if="currentLanguageIsCzech()">
+                     <span class="flag flag-cz"></span>
+                     <span class="dropdown-label">{{ 'BUTTON_LANG_CZ' | translate }}</span>
+                   </span>
                    <span class="caret"></span>
                  </a>
                  <ul class="dropdown-menu" uib-dropdown-menu role="menu">
@@ -114,8 +118,26 @@
                        <span class="flag flag-en"></span>
                        <span class="dropdown-label">{{ 'BUTTON_LANG_EN' | translate }}</span>
                      </a>
+                     <a class="dropdown-item" ng-click="changeLanguage('cz')">
+                         <span class="flag flag-cz"></span>
+                         <span class="dropdown-label">{{ 'BUTTON_LANG_CZ' | translate }}</span>
+                     </a>
                    </li>
                    <li ng-if="currentLanguageIsEnglish()">
+                     <a class="dropdown-item" ng-click="changeLanguage('de')">
+                       <span class="flag flag-de"></span>
+                       <span class="dropdown-label">{{ 'BUTTON_LANG_DE' | translate }}</span>
+                     </a>
+                     <a class="dropdown-item" ng-click="changeLanguage('cz')">
+                         <span class="flag flag-cz"></span>
+                         <span class="dropdown-label">{{ 'BUTTON_LANG_CZ' | translate }}</span>
+                     </a>
+                   </li>
+                   <li ng-if="currentLanguageIsCzech()">
+                     <a class="dropdown-item" ng-click="changeLanguage('en')">
+                         <span class="flag flag-en"></span>
+                         <span class="dropdown-label">{{ 'BUTTON_LANG_EN' | translate }}</span>
+                     </a>
                      <a class="dropdown-item" ng-click="changeLanguage('de')">
                        <span class="flag flag-de"></span>
                        <span class="dropdown-label">{{ 'BUTTON_LANG_DE' | translate }}</span>
@@ -140,6 +162,11 @@
 				              <span class="icon fa fa-power-off"></span> {{ 'LOGOUT' | translate }}
 				            </a>
 				          </li>
+<!--                            <li>-->
+<!--                                <a class="clearfix dropdown-item" ng-click="currentUsername()">-->
+<!--                                    <span class="icon fa fa-user"></span> {{ 'Check Username' }}-->
+<!--                                </a>-->
+<!--                            </li>-->
 				        </ul>
 				      </li>
 				    </ul>
@@ -154,12 +181,13 @@
     
     </div>
     <footer class="footer clearfix" id="footer">
-      <div class="container"> 
-        <div class="pull-left">
-          openmuc.org &copy; 2021
-        </div>
-        <div class="pull-right">
+      <div class="container">
+        <div class="stretch">
+            openmuc.org &copy; 2021
           <img alt="Openmuc" src="openmuc/images/footer.png" height="40">
+          <img alt="VUT" src="openmuc/images/vut-logo.png" height="40">
+          <img alt="CyberGrid" src="openmuc/images/cybergrid.png" height="40">
+          <img alt="MVCR" src="openmuc/images/mvcr-long.png" height="40">
         </div>
       </div>          
     </footer>

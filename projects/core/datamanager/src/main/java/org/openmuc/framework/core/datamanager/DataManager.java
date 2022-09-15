@@ -928,7 +928,7 @@ public final class DataManager extends Thread implements DataAccessService, Conf
     /**
      * Registers a new ServerService.
      * 
-     * @param serverService
+     * @param ServerService
      *            ServerService object to register
      */
     @Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
@@ -944,7 +944,7 @@ public final class DataManager extends Thread implements DataAccessService, Conf
     /**
      * Removes a registered ServerService.
      *
-     * @param serverService
+     * @param ServerService
      *            ServerService object to unset
      */
     @SuppressWarnings("unused")

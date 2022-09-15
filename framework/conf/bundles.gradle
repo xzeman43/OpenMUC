@@ -29,7 +29,7 @@ dependencies {
     osgibundles group: "org.openmuc.framework", name: "openmuc-webui-dataexporter",            version: cfgVersion
     osgibundles group: "org.openmuc.framework", name: "openmuc-webui-dataplotter",             version: cfgVersion
     osgibundles group: "org.openmuc.framework", name: "openmuc-webui-mediaviewer",             version: cfgVersion
-    osgibundles group: "org.openmuc.framework", name: "openmuc-webui-simpledemovisualisation", version: cfgVersion
+//    osgibundles group: "org.openmuc.framework", name: "openmuc-webui-simpledemovisualisation", version: cfgVersion
     osgibundles group: "org.openmuc.framework", name: "openmuc-webui-loop",                    version: cfgVersion
     osgibundles group: "org.openmuc.framework", name: "openmuc-webui-brewery",                 version: cfgVersion
     osgibundles group: "org.openmuc.framework", name: "openmuc-webui-energymap",               version: cfgVersion
@@ -58,7 +58,7 @@ dependencies {
     osgibundles group: "org.openmuc.framework", name: "openmuc-driver-iec61850",                  version: cfgVersion
     osgibundles group: "org.openmuc.framework", name: "openmuc-driver-iec60870",                  version: cfgVersion
 
-    osgibundles group: "org.openmuc.framework", name: "openmuc-app-simpledemo",                version: cfgVersion
+//    osgibundles group: "org.openmuc.framework", name: "openmuc-app-simpledemo",                version: cfgVersion
 
     //------------------------------------------------------------------------------------------------------
     // Add your database engine specific bundle for h2, jdbc or postgresql here

@@ -97,6 +97,10 @@ body {
   background: url('../images/flag-en.gif');
 }
 
+.flag-cz {
+	background: url('../images/flag-cz.gif');
+}
+
 .dropdown-label {
 	padding: 0 3px;
 }

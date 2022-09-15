@@ -43,4 +43,6 @@ public interface AuthenticationService {
 
     boolean isUserAdmin(String userName);
 
+    String getUsersGroup(String userName);
+
 }

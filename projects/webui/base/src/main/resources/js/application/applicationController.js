@@ -12,6 +12,11 @@
 			return AuthService.isLoggedIn();
 		};
 
+		//TODO Why it has to be here to work correctly??? Should be enough to be in authService
+		$scope.currentUsername = function() {
+			return AuthService.currentUsername();
+		};
+
 		$scope.logout = function() {
 			AuthService.logout();
 
@@ -29,6 +34,10 @@
 
 		$scope.currentLanguageIsGerman = function() {
 			return $translate.use() === 'de';
+		};
+
+		$scope.currentLanguageIsCzech = function() {
+			return $translate.use() === 'cz';
 		};
 
 	};
