@@ -138,7 +138,7 @@ public class DeviceResourceServlet extends GenericServlet {
             if (pathInfoArray.length == 1) {
                 boolean details = Boolean.parseBoolean(request.getParameter("details"));
                 if (details) {
-                    doGetDevice(json, deviceId, response);
+                    doGetDeviceDetails(json, deviceId, response);
                 }
                 else {
                     json.addRecordList(getChannelList(deviceId));
@@ -179,6 +179,12 @@ public class DeviceResourceServlet extends GenericServlet {
         DeviceConfig deviceConfig = rootConfig.getDevice(deviceId);
 
         json.addDevice(RestDeviceWrapper.getDevice(deviceConfig, configService, dataAccess));
+    }
+
+    private void doGetDeviceDetails(ToJson json, String deviceId, HttpServletResponse response) {
+        DeviceConfig deviceConfig = rootConfig.getDevice(deviceId);
+
+        json.addDeviceDetails(RestDeviceWrapper.getDeviceDetails(deviceConfig, configService, dataAccess));
     }
 
     private void doGetStateList(ToJson json) {

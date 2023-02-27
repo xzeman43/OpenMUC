@@ -24,19 +24,19 @@
 		$rootScope.selectedChannels = [];
 
 		$scope.drivers = [];
-		DriversService.getDrivers().then(function(drivers){
+		DriversService.getDriversWithInfos().then(function(drivers){
 			$scope.drivers = drivers;
 
-			$scope.drivers.forEach((driver) => {
-				DevicesService.getDevices(driver).then((devices) => {
-					driver.devices = devices;
-
-					devices.forEach((device) => {
-						ChannelsService.getChannels(device).then((channels) => device.channels = channels);
-					});
-
-				});
-			});
+			// $scope.drivers.forEach((driver) => {
+			// 	DevicesService.getDevices(driver).then((devices) => {
+			// 		driver.devices = devices;
+			//
+			// 		devices.forEach((device) => {
+			// 			ChannelsService.getChannels(device).then((channels) => device.channels = channels);
+			// 		});
+			//
+			// 	});
+			// });
 		});
 
 		$scope.deleteChannel = function(channelId) {

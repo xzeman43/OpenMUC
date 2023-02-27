@@ -23,6 +23,7 @@ package org.openmuc.framework.driver.iec60870;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 import org.openmuc.framework.config.ArgumentSyntaxException;
 import org.openmuc.framework.config.ChannelScanInfo;
@@ -55,6 +56,7 @@ public final class Iec60870Connection implements Connection {
     private final String driverId;
 
     private final Iec60870ListenerList iec60870listener = new Iec60870ListenerList();
+
     private final Iec60870ReadListener readListener = new Iec60870ReadListener(clientConnection);
 
     public Iec60870Connection(DeviceAddress deviceAddress, DeviceSettings deviceSettings, String driverId)
@@ -75,21 +77,24 @@ public final class Iec60870Connection implements Connection {
         } catch (IOException e) {
             throw new ConnectionException(MessageFormat.format("Was not able to connect to {0}:{1}. {2}",
                     this.deviceAddress.hostAddress().getHostName(), port, e.getMessage()));
+        } catch (TimeoutException e) {
+            throw new ConnectionException("Timeout while start data transfer.", e);
         }
     }
 
-    private void startListenIec60870(DeviceSettings deviceSettings, int port, String hostAddress) throws IOException {
+    private void startListenIec60870(DeviceSettings deviceSettings, int port, String hostAddress)
+            throws IOException, TimeoutException {
         clientConnection.startDataTransfer(iec60870listener);
         iec60870listener.addListener(readListener);
-        logger.debug("Driver-IEC60870: successful sent startDT act to ", hostAddress, ":", port,
+        logger.info("Driver-IEC60870: successful sended startDT act to " + hostAddress +  ":" + port +
                 "and got startDT con.");
     }
 
     private void connect(ClientConnectionBuilder clientConnectionBuilder, int port, String hostAddress)
             throws IOException {
-        logger.debug("Try to connect to: ", hostAddress, ':', port);
+        logger.debug("Try to connect to: " + hostAddress + ':' + port);
         clientConnection = clientConnectionBuilder.build();
-        logger.info("Driver-IEC60870: successful connected to ", hostAddress, ":", port);
+        logger.info("Driver-IEC60870: successful connected to " + hostAddress + ":" + port);
     }
 
     @Override
@@ -101,17 +106,25 @@ public final class Iec60870Connection implements Connection {
     @Override
     public Object read(List<ChannelRecordContainer> containers, Object containerListHandle, String samplingGroup)
             throws UnsupportedOperationException, ConnectionException {
-        // TODO: read specific values, not only general interrogation
+        // TODO: read specific values, not only general interrogation !!!DONE by ZemanK!!!
         readListener.setContainer(containers);
         readListener.setReadTimeout(deviceSettings.readTimeout());
-        try {
-            clientConnection.interrogation(1, CauseOfTransmission.ACTIVATION, new IeQualifierOfInterrogation(20));
-            readListener.read();
-        } catch (IOException e) {
-            throw new ConnectionException(e);
-        } catch (UnsupportedOperationException e) {
-            logger.error(e.getMessage());
-            throw e;
+        for (ChannelRecordContainer container: containers) {
+            ChannelAddress channelAddress;
+            try {
+                channelAddress = new ChannelAddress(container.getChannelAddress());
+                //            clientConnection.interrogation(65535, CauseOfTransmission.ACTIVATION, new IeQualifierOfInterrogation(20));
+
+                clientConnection.readCommand(channelAddress.commonAddress(), channelAddress.ioa());
+                readListener.read();
+            } catch (ArgumentSyntaxException e) {
+                logger.error(e.getMessage());
+            } catch (IOException e) {
+                throw new ConnectionException(e);
+            } catch (UnsupportedOperationException e) {
+                logger.error(e.getMessage());
+                throw e;
+            }
         }
         return null;
     }

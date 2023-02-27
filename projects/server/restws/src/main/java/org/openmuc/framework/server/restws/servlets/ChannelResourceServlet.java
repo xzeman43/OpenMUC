@@ -122,17 +122,19 @@ public class ChannelResourceServlet extends GenericServlet {
     }
 
     private void doGetChannel(HttpServletRequest request, HttpServletResponse response, String[] pathInfoArray,
-            ToJson json) throws IOException {
+                                     ToJson json) throws IOException {
 
         String channelId = pathInfoArray[0];
 
         if (pathInfoArray.length == 1) {
             boolean details = Boolean.parseBoolean(request.getParameter("details"));
             if (details) {
-                doGetChannel(json, channelId, response);
+                doGetChannelDetails(json, channelId, response);
             }
             else {
-                doGetRecord(json, channelId, response);
+                //TODO what will broke this change?
+//                doGetRecord(json, channelId, response);
+                doGetChannel(json, channelId, response);
             }
         }
         else if (pathInfoArray.length == 2) {
@@ -180,11 +182,17 @@ public class ChannelResourceServlet extends GenericServlet {
         }
     }
 
-    private void doGetChannel(ToJson json, String channelId, HttpServletResponse response) throws IOException {
+    private void doGetChannelDetails(ToJson json, String channelId, HttpServletResponse response) throws IOException {
         ChannelConfig channelConfig = getChannelConfig(channelId, response);
         if (channelConfig != null) {
-            json.addChannel(RestChannelWrapper.getChannel(channelConfig, dataAccess));
+            json.addChannelDetails(RestChannelWrapper.getChannel(channelConfig, dataAccess));
         }
+    }
+
+    private void doGetChannel(ToJson json, String channelId, HttpServletResponse response) throws IOException {
+
+            json.addChannel(dataAccess.getChannel(channelId));
+
     }
 
     private void doGetChannelField(ToJson json, String channelId, String field, HttpServletResponse response)
@@ -457,7 +465,6 @@ public class ChannelResourceServlet extends GenericServlet {
         if (channelConfig != null) {
             try {
                 json.setChannelConfig(channelConfig, channelId);
-
                 configService.setConfig(rootConfig);
                 configService.writeConfigToFile();
                 

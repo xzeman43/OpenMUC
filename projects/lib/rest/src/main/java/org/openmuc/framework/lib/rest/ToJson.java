@@ -25,6 +25,7 @@ import static org.openmuc.framework.lib.rest.Const.VALUE_STRING;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -184,6 +185,20 @@ public class ToJson {
         jsonObject.add(Const.RECORDS, jsa);
     }
 
+    public void addRecordListWithIds(List<Channel> channels) throws ClassCastException {
+
+        JsonArray jsa = new JsonArray();
+        channels.sort(Comparator.comparing(Channel::getDeviceId));
+        for (Channel channel : channels) {
+            JsonObject jso = new JsonObject();
+            jso.addProperty(Const.ID, channel.getId());
+            jso.addProperty(Const.VALUE_TYPE, channel.getValueType().toString());
+            jso.add(Const.RECORD, getRecordAsJsonElement(channel.getLatestRecord(), channel.getValueType()));
+            jsa.add(jso);
+        }
+        jsonObject.add(Const.RECORDS, jsa);
+    }
+
     public void addRecord(Record record, ValueType valueType) throws ClassCastException {
 
         jsonObject.add(Const.RECORD, getRecordAsJsonElement(record, valueType));
@@ -204,19 +219,19 @@ public class ToJson {
         JsonArray jsa = new JsonArray();
         for (RestChannelWrapper channel : channels) {
             JsonObject jso = new JsonObject();
-            addChannel(channel, jso);
+            addChannelDetails(channel, jso);
             
             jsa.add(jso);
         }
         jsonObject.add(Const.CHANNELS, jsa);
     }
 
-    public void addChannel(RestChannelWrapper channel) {
+    public void addChannelDetails(RestChannelWrapper channel) {
 
-        addChannel(channel, jsonObject);
+        addChannelDetails(channel, jsonObject);
     }
 
-    private void addChannel(RestChannelWrapper channel, JsonObject jso) {
+    private void addChannelDetails(RestChannelWrapper channel, JsonObject jso) {
 
         JsonObject jsco = gson.toJsonTree(channel.getConfig(), RestChannelConfig.class).getAsJsonObject();
         jsco.remove(Const.ID);
@@ -226,6 +241,18 @@ public class ToJson {
         jso.addProperty(Const.DRIVER, channel.getDriver());
         jso.addProperty(Const.DEVICE, channel.getDevice());
         jso.addProperty(Const.STATE, channel.getState().name());
+        jso.add(Const.RECORD, getRecordAsJsonElement(channel.getLatestRecord(), channel.getValueType()));
+    }
+
+    public void addChannel(Channel channel) {
+
+        addChannel(channel, jsonObject);
+    }
+
+    private void addChannel(Channel channel, JsonObject jso) {
+
+        jso.addProperty(Const.ID, channel.getId());
+        jso.addProperty(Const.VALUE_TYPE, channel.getValueType().toString());
         jso.add(Const.RECORD, getRecordAsJsonElement(channel.getLatestRecord(), channel.getValueType()));
     }
 
@@ -411,6 +438,32 @@ public class ToJson {
         JsonArray channels = new JsonArray();
         for (RestChannel channel : device.getChannels()) {
             channels.add(gson.toJsonTree(channel, RestChannel.class).getAsJsonObject());
+        }
+        jso.add(Const.RECORDS, channels);
+    }
+
+    public void addDeviceDetails(RestDeviceWrapper device) {
+
+        addDeviceDetails(device, jsonObject);
+    }
+
+    private void addDeviceDetails(RestDeviceWrapper device, JsonObject jso) {
+
+        JsonObject jsco = gson.toJsonTree(device.getConfig(), RestDeviceConfig.class).getAsJsonObject();
+        jsco.remove(Const.ID);
+        jso.addProperty(Const.ID, device.getId());
+        jso.add(Const.CONFIGS, jsco);
+
+        jso.add(Const.DRIVER, gson.toJsonTree(device.getDriver(), RestDriverInfo.class).getAsJsonObject());
+        jso.addProperty(Const.STATE, device.getState().name());
+
+        JsonArray channels = new JsonArray();
+        for (RestChannel channel : device.getChannels()) {
+
+            channel.setChannelConfig(device.getChannelConfigs().stream().filter(conf -> channel.getId().equals(conf.getId())).findAny().orElse(null));
+            JsonElement chEl = gson.toJsonTree(channel, RestChannel.class).getAsJsonObject();
+//            JsonElement el = gson.toJsonTree(device.getChannelConfigs().stream().filter(conf -> channel.getId().equals(conf.getId())).findAny().orElse(null), RestChannelConfig.class).getAsJsonObject();
+            channels.add(chEl);
         }
         jso.add(Const.RECORDS, channels);
     }

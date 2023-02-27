@@ -120,6 +120,11 @@ public class Iec60870Listener implements ConnectionEventListener {
         listener.connectionInterrupted(driverId, connection);
     }
 
+    @Override
+    public void dataTransferStateChanged(boolean stopped) {
+
+    }
+
     private void newRecords(int i, Record record) {
         if (logger.isTraceEnabled()) {
             logger.trace("Set new Record: " + record.toString());

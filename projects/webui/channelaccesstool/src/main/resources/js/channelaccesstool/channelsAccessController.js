@@ -14,7 +14,7 @@
 
         function retrieveDeviceFor(deviceId) {
             var device = {id: deviceId, channels: {}};
-            ChannelsService.getChannels(device).then((channels) => {
+            ChannelsService.getChannelsDetails(device).then((channels) => {
                 channels.forEach(channel => {
                     channel.newValue = '';
                     device.channels[channel.id] = channel;

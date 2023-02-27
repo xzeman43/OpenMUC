@@ -27,6 +27,7 @@ public class RestChannel {
     private String id;
     private ValueType valueType;
     private RestRecord record;
+    private RestChannelConfig channelConfig;
 
     public String getId() {
         return id;
@@ -50,6 +51,14 @@ public class RestChannel {
 
     public void setRecord(RestRecord record) {
         this.record = record;
+    }
+
+    public RestChannelConfig getChannelConfig() {
+        return channelConfig;
+    }
+
+    public void setChannelConfig(RestChannelConfig channelConfig) {
+        this.channelConfig = channelConfig;
     }
 
 }

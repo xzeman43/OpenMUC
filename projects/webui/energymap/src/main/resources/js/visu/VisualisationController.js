@@ -22,6 +22,16 @@
                 window.location = "#!/energymap/sokolnice";
                 console.log(e)});
 
+            albrechtice = svg_document.getElementById("albrechtice");
+            albrechtice.addEventListener("click", function (e) {
+                window.location = "#!/energymap/albrechtice"
+                console.log(e)});
+
+            mirovka = svg_document.getElementById("mirovka");
+            mirovka.addEventListener("click", function (e) {
+                window.location = "#!/energymap/mirovka"
+                console.log(e)});
+
 
             $scope.interval = "";
             $interval.cancel($scope.interval);

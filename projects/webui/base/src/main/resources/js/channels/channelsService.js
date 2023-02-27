@@ -97,6 +97,26 @@
             });
         };
 
+        this.getChannelsDetails = function (device) {
+            var req = {
+                method: 'GET',
+                url: SETTINGS.API_URL + SETTINGS.DEVICES_URL + device.id,
+                params: { "details": "true" },
+                headers: {
+                    'Authorization': RestServerAuthService.getAuthHash()
+                }
+            };
+
+            return $http(req).then((response) => {
+                return response.data.records.map((channels) => {
+                    var channel = {id: channels.id, data: channels.channelConfig, records: channels.record};
+                    // ChannelDataService.getChannelData(channel).then((data) => channel.data = data);
+                    // ChannelDataService.getChannelDataValues(channel).then((records) => channel.records = records);
+                    return channel;
+                });
+            });
+        };
+
         this.getHistoryValues = function (channelId, from, until) {
             var req = {
                 method: 'GET',
@@ -215,26 +235,20 @@
             });
         };
 
-        this.getChannel = function (channelId) {
+        this.getChannelData = function (channelId) {
             var channel = {
                 id: channelId,
                 configs: {}
             };
 
-            return ChannelDataService.getChannelData(channel).then( async function (configs) {
-
-               channel.configs = await configs;
-               return channel;
-            });
-            // Not working when the returning variable is defined outside
-            // ChannelDataService.getChannelData(channel).then(configs => channel.configs = configs);
-            // return channel;
+            ChannelDataService.getChannelData(channel).then(configs => channel.configs = configs);
+            return channel;
         };
 
-        this.getChannelDatas = function (id) {
+        this.getChannel = function (channelId) {
             var req = {
                 method: 'GET',
-                url: SETTINGS.API_URL + SETTINGS.CHANNELS_URL + id + SETTINGS.CONFIGS_URL ,
+                url: SETTINGS.API_URL + SETTINGS.CHANNELS_URL + channelId + SETTINGS.CONFIGS_URL ,
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': RestServerAuthService.getAuthHash()

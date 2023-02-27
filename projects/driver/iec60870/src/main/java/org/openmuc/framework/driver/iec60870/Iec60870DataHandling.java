@@ -427,7 +427,8 @@ public class Iec60870DataHandling {
         int length = 3;
 
         if (values.length == length) {
-            commandStateOn = values[0] >= 0;
+            //TODO KZ here was >= so the 0 was unable to send. Why?
+            commandStateOn = values[0] > 0;
             select = values[1] >= 0;
         }
         else {

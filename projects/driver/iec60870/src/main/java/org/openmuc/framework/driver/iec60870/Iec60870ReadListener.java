@@ -107,6 +107,11 @@ class Iec60870ReadListener implements ConnectionEventListener {
         ioException = e;
     }
 
+    @Override
+    public void dataTransferStateChanged(boolean stopped) {
+
+    }
+
     void read() throws IOException {
         long sleepTime = 100;
         long time = 0;

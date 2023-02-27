@@ -28,6 +28,7 @@ import org.openmuc.framework.config.ServerMapping;
 import org.openmuc.framework.data.Flag;
 import org.openmuc.framework.data.Record;
 import org.openmuc.framework.data.Value;
+import org.openmuc.framework.data.ValueType;
 import org.openmuc.framework.dataaccess.Channel;
 import org.openmuc.framework.lib.rest.exceptions.RestConfigIsNotCorrectException;
 
@@ -45,6 +46,10 @@ public class RestChannelMapper {
             
             Flag flag = r.getFlag();
             Value value = r.getValue();
+            ValueType valueType = c.getValueType();
+            if (valueType != null){
+                rc.setValueType(c.getValueType());
+            }
             if (value != null) {
                 switch (c.getValueType()) {
                 case FLOAT:

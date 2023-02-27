@@ -1,0 +1,51 @@
+<div class="svg-container">
+  <object id="mirovka" type="image/svg+xml" data="energymap/images/trafo_hejna.svg" class="svg-content" onload="display_visualisation()" style="background-color:#FFFDD0"></object>
+  <div class="right-table">
+    <div class="custom-checkbox">
+      <input id="tatb"
+             type="checkbox"
+             name="status"
+             checked>
+      <label for="tatb">
+        <div class="status-switch"
+             data-unchecked="TA"
+             data-checked="TB">
+        </div>
+      </label>
+    </div>
+
+    <div class="custom-checkbox">
+      <input id="onoff"
+             type="checkbox"
+             name="status">
+      <label for="onoff">
+        <div class="status-switch inverse-color"
+             data-unchecked="Zap."
+             data-checked="Vyp.">
+        </div>
+      </label>
+    </div>
+
+    <button class="button1">Vyčíst data</button>
+
+    <div class="myrow">
+      <div class="mycolumn">
+        <p> <br> </p>
+        <p>SPI = <span id="SPI">1</span></p>
+        <p>DPI = <span id="DPI">2</span></p>
+        <p>SFP = <span id="SFP">417.5</span></p>
+      </div>
+      <div class="mycolumn">
+        <p>channels</p>
+        <p>= <span id="T1_SPI">T1_SPI</span></p>
+        <p>= <span id="T1_DPI">T1_DPI</span></p>
+        <p>= <span id="T1_SFP">T1_SFP</span></p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<form action="http://127.0.0.1:8888/#!/energymap/index">
+  <input type="submit" value="Back to map" />
+</form>

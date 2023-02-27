@@ -28,7 +28,7 @@
 
 		var channelId = $stateParams.id;
 		if (channelId) {
-			$scope.channel = ChannelsService.getChannel(channelId);
+			$scope.channel = ChannelsService.getChannelData(channelId);
 			$scope.channelId = channelId;
 		} else {
 			$scope.channel = [];
@@ -119,12 +119,12 @@
 				return valuetypeLengthInvalid;
 			}
 			else{
-				if ($scope.channel.configs.valueType == "BYTE_ARRAY" && 
+				if ($scope.channel.valueType == "BYTE_ARRAY" &&
 					(typeof $scope.channel.configs.valueTypeLength === "undefined" || $scope.channel.configs.valueTypeLength == 0))
 				{
 				return true;	
 				}
-				else if ($scope.channel.configs.valueType == "STRING" && 
+				else if ($scope.channel.valueType == "STRING" &&
 					(typeof $scope.channel.configs.valueTypeLength === "undefined" || $scope.channel.configs.valueTypeLength == 0))
 				{
 					return true;	

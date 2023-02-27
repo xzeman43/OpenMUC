@@ -55,4 +55,9 @@ class Iec60870ListenerList implements ConnectionEventListener {
         }
     }
 
+    @Override
+    public void dataTransferStateChanged(boolean stopped) {
+
+    }
+
 }

@@ -28,6 +28,40 @@
             });
         };
 
+        this.getDriversWithInfos = function () {
+            var req = {
+                method: 'GET',
+                url: SETTINGS.API_URL + SETTINGS.DRIVERS_URL,
+                params: { "details": "true" },
+                headers: {
+                    'Authorization': RestServerAuthService.getAuthHash()
+                }
+            };
+
+            return $http(req).then(function (response) {
+                // add basic data
+                var drivers = response.data.drivers.map(value => {
+                    var driver = {id: value.id};
+                    driver.devices = value.devices;
+
+                    var devices = driver.devices.map(value1 => {
+                        var device = {id: value1.id};
+                        device.channels = value1.records;
+
+                        var channels = device.channels.map(value2 => {
+                            var channel = {id: value2.id}
+                            return channel;
+                        });
+                        driver.channels = channels;
+                        return device;
+                    });
+                    driver.devices = devices;
+                    return driver;
+                });
+                return drivers;
+            });
+        };
+
         this.getDriver = function (id) {
             var driver = {
                 id: id,

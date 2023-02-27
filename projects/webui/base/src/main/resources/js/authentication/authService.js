@@ -25,7 +25,12 @@
         };
 
         this.currentUsername = function() {
-            console.log(userName);
+            if (typeof userName == 'undefined'){
+                if (!this.isLoggedIn()){
+                    console.log(userName);
+                    return "";
+                }
+            }
             return userName;
         };
 

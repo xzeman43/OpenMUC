@@ -595,7 +595,7 @@ public final class Device {
     public <T extends DeviceTask & ConnectedTask> void addTask(T deviceTask) {
         if (isConnected()) {
             taskList.add(deviceTask);
-            //TODO Why there was a check for containing one task only???
+            //TODO KZ Why there was a check for containing one task only???
             if (!containsOneTask()) {
                 state = deviceTask.getType().getResultingState();
                 dataManager.executor.execute(deviceTask);
@@ -607,7 +607,11 @@ public final class Device {
     }
 
     public void taskFinished() {
-        taskList.removeFirst();
+        if(taskList.size() > 0) {
+            taskList.removeFirst();
+        }else{
+            // TODO KZ How the fuck it ended up in here???
+        }
         if (eventList.isEmpty()) {
             executeNextTask();
         }

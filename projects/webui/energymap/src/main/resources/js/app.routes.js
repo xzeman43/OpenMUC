@@ -48,6 +48,44 @@
                     }
                 }
             }).
+            state('energymap.albrechtice', {
+                url: '/albrechtice',
+                templateUrl: 'energymap/html/albrechtice.html',
+                controller: 'AlbrechticeController',
+                requireLogin: true,
+                resolve: {
+                    openmuc: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            {
+                                name: 'openmuc.energymap',
+                                files: ['openmuc/js/channels/channelsService.js',
+                                    'openmuc/js/channels/channelDataService.js',
+                                    'energymap/css/energymap/main.css',
+                                    'energymap/js/visu/AlbrechticeController.js']
+                            }
+                        )
+                    }
+                }
+            }).
+            state('energymap.mirovka', {
+                url: '/mirovka',
+                templateUrl: 'energymap/html/mirovka.html',
+                controller: 'MirovkaController',
+                requireLogin: true,
+                resolve: {
+                    openmuc: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            {
+                                name: 'openmuc.energymap',
+                                files: ['openmuc/js/channels/channelsService.js',
+                                    'openmuc/js/channels/channelDataService.js',
+                                    'energymap/css/energymap/main.css',
+                                    'energymap/js/visu/MirovkaController.js']
+                            }
+                        )
+                    }
+                }
+            }).
             state('energymap.omg', {
                 url: '/omg',
                 templateUrl: 'energymap/html/kletna_station.html',

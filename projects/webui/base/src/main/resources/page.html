@@ -57,7 +57,7 @@
     <link rel="icon" href="openmuc/images/openmuc-favicon.png" type="image/png" />
   </head>
 
-  <body ng-controller="ApplicationController" id="bodyID">
+  <body ng-controller="ApplicationController as ac" id="bodyID">
     <div id="wrap">
     
       <nav class="navbar navbar-expand-md bg-light" role="navigation" id="header">
@@ -75,7 +75,7 @@
           </div>
       
           <div class="collapse navbar-collapse" id="openmuc-navbar">
-            <ul class="nav navbar-nav" ng-if="isLoggedIn()" role="menu">
+            <ul class="nav navbar-nav" ng-if="ac.isLoggedIn()" role="menu">
               <li class="nav-item" uib-dropdown>
                 <a class="nav-link dropdown-toggle" uib-dropdown-toggle data-toggle="dropdown" role="button" aria-expanded="false">
                   <i class="fa fa-th-large fa-lg"></i> 
@@ -96,80 +96,80 @@
             </ul>
             
             <ul class="nav navbar-nav ml-auto" role="tablist">
-				      <li role="presentation" class="nav-item" uib-dropdown>
-				        <a class="nav-link dropdown-toggle" uib-dropdown-toggle data-toggle="dropdown" role="button" aria-expanded="false">
-                   <span ng-if="currentLanguageIsEnglish()">
-                     <span class="flag flag-en"></span>
-                     <span class="dropdown-label">{{ 'BUTTON_LANG_EN' | translate }}</span>
-                   </span>
-                   <span ng-if="currentLanguageIsGerman()">
-                     <span class="flag flag-de"></span>
-                     <span class="dropdown-label">{{ 'BUTTON_LANG_DE' | translate }}</span>
-                   </span>
-                   <span ng-if="currentLanguageIsCzech()">
-                     <span class="flag flag-cz"></span>
-                     <span class="dropdown-label">{{ 'BUTTON_LANG_CZ' | translate }}</span>
-                   </span>
-                   <span class="caret"></span>
-                 </a>
-                 <ul class="dropdown-menu" uib-dropdown-menu role="menu">
-                   <li ng-if="currentLanguageIsGerman()">
-                     <a class="dropdown-item" ng-click="changeLanguage('en')">
-                       <span class="flag flag-en"></span>
-                       <span class="dropdown-label">{{ 'BUTTON_LANG_EN' | translate }}</span>
-                     </a>
-                     <a class="dropdown-item" ng-click="changeLanguage('cz')">
-                         <span class="flag flag-cz"></span>
-                         <span class="dropdown-label">{{ 'BUTTON_LANG_CZ' | translate }}</span>
-                     </a>
-                   </li>
-                   <li ng-if="currentLanguageIsEnglish()">
-                     <a class="dropdown-item" ng-click="changeLanguage('de')">
-                       <span class="flag flag-de"></span>
-                       <span class="dropdown-label">{{ 'BUTTON_LANG_DE' | translate }}</span>
-                     </a>
-                     <a class="dropdown-item" ng-click="changeLanguage('cz')">
-                         <span class="flag flag-cz"></span>
-                         <span class="dropdown-label">{{ 'BUTTON_LANG_CZ' | translate }}</span>
-                     </a>
-                   </li>
-                   <li ng-if="currentLanguageIsCzech()">
-                     <a class="dropdown-item" ng-click="changeLanguage('en')">
+                <li role="presentation" class="nav-item" uib-dropdown>
+                    <a class="nav-link dropdown-toggle" uib-dropdown-toggle data-toggle="dropdown" role="button" aria-expanded="false">
+                       <span ng-if="ac.currentLanguageIsEnglish()">
                          <span class="flag flag-en"></span>
                          <span class="dropdown-label">{{ 'BUTTON_LANG_EN' | translate }}</span>
+                       </span>
+                       <span ng-if="ac.currentLanguageIsGerman()">
+                         <span class="flag flag-de"></span>
+                         <span class="dropdown-label">{{ 'BUTTON_LANG_DE' | translate }}</span>
+                       </span>
+                       <span ng-if="ac.currentLanguageIsCzech()">
+                         <span class="flag flag-cz"></span>
+                         <span class="dropdown-label">{{ 'BUTTON_LANG_CZ' | translate }}</span>
+                       </span>
+                       <span class="caret"></span>
                      </a>
-                     <a class="dropdown-item" ng-click="changeLanguage('de')">
-                       <span class="flag flag-de"></span>
-                       <span class="dropdown-label">{{ 'BUTTON_LANG_DE' | translate }}</span>
-                     </a>
-                   </li>
-                 </ul>
-				      </li>
-				      <li ng-if="isLoggedIn()" role="presentation" class="nav-item" uib-dropdown>
-				        <a class="nav-link dropdown-toggle" uib-dropdown-toggle data-toggle="dropdown" role="button" aria-expanded="false">
-				          <i class="fa fa-user fa-lg"></i> 
-				          <span class="dropdown-label">{{ currentUsername() }}</span>
-				          <span class="caret"></span>
-				        </a>
-				        <ul class="dropdown-menu" uib-dropdown-menu role="menu">
-				          <li>
-				            <a class="clearfix dropdown-item" ui-sref="userconfigurator.edit({id: currentUser.user})">
-				              <span class="icon fa fa-pencil"></span> {{ 'EDIT_PROFILE' | translate }}
-				            </a>
-				          </li>
-				          <li>
-				            <a class="clearfix dropdown-item" ng-click="logout()">
-				              <span class="icon fa fa-power-off"></span> {{ 'LOGOUT' | translate }}
-				            </a>
-				          </li>
+                     <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                       <li ng-if="ac.currentLanguageIsGerman()">
+                         <a class="dropdown-item" ng-click="ac.changeLanguage('en')">
+                           <span class="flag flag-en"></span>
+                           <span class="dropdown-label">{{ 'BUTTON_LANG_EN' | translate }}</span>
+                         </a>
+                         <a class="dropdown-item" ng-click="ac.changeLanguage('cz')">
+                             <span class="flag flag-cz"></span>
+                             <span class="dropdown-label">{{ 'BUTTON_LANG_CZ' | translate }}</span>
+                         </a>
+                       </li>
+                       <li ng-if="ac.currentLanguageIsEnglish()">
+                         <a class="dropdown-item" ng-click="ac.changeLanguage('de')">
+                           <span class="flag flag-de"></span>
+                           <span class="dropdown-label">{{ 'BUTTON_LANG_DE' | translate }}</span>
+                         </a>
+                         <a class="dropdown-item" ng-click="ac.changeLanguage('cz')">
+                             <span class="flag flag-cz"></span>
+                             <span class="dropdown-label">{{ 'BUTTON_LANG_CZ' | translate }}</span>
+                         </a>
+                       </li>
+                       <li ng-if="ac.currentLanguageIsCzech()">
+                         <a class="dropdown-item" ng-click="ac.changeLanguage('en')">
+                             <span class="flag flag-en"></span>
+                             <span class="dropdown-label">{{ 'BUTTON_LANG_EN' | translate }}</span>
+                         </a>
+                         <a class="dropdown-item" ng-click="ac.changeLanguage('de')">
+                           <span class="flag flag-de"></span>
+                           <span class="dropdown-label">{{ 'BUTTON_LANG_DE' | translate }}</span>
+                         </a>
+                       </li>
+                     </ul>
+                </li>
+              <li ng-if="ac.isLoggedIn()" role="presentation" class="nav-item" uib-dropdown>
+                <a class="nav-link dropdown-toggle" uib-dropdown-toggle data-toggle="dropdown" role="button" aria-expanded="false">
+                  <i class="fa fa-user fa-lg"></i>
+                  <span class="dropdown-label" >{{ ac.getCurrentUsername() }}</span>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                  <li>
+                    <a class="clearfix dropdown-item" ui-sref="userconfigurator.edit({id: currentUser.user})">
+                      <span class="icon fa fa-pencil"></span> {{ 'EDIT_PROFILE' | translate }}
+                    </a>
+                  </li>
+                  <li>
+                    <a class="clearfix dropdown-item" ng-click="ac.logout()">
+                      <span class="icon fa fa-power-off"></span> {{ 'LOGOUT' | translate }}
+                    </a>
+                  </li>
 <!--                            <li>-->
 <!--                                <a class="clearfix dropdown-item" ng-click="currentUsername()">-->
 <!--                                    <span class="icon fa fa-user"></span> {{ 'Check Username' }}-->
 <!--                                </a>-->
 <!--                            </li>-->
-				        </ul>
-				      </li>
-				    </ul>
+                </ul>
+              </li>
+            </ul>
 
           </div>
         </div>

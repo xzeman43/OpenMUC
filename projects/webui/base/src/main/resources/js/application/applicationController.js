@@ -4,39 +4,41 @@
 
 	var ApplicationController = function($scope, $state, $cookies, $translate, notify, AuthService) {
 
+		var vm = this;
+
 		$translate('SUCCESSFULLY_LOGGED_OUT').then(function(text) {
-			$scope.loggedOutText = text;
+			vm.loggedOutText = text;
 		});
 
-		$scope.isLoggedIn = function() {
+		vm.isLoggedIn = function() {
 			return AuthService.isLoggedIn();
 		};
 
 		//TODO Why it has to be here to work correctly??? Should be enough to be in authService
-		$scope.currentUsername = function() {
+		vm.getCurrentUsername = function() {
 			return AuthService.currentUsername();
 		};
 
-		$scope.logout = function() {
+		vm.logout = function() {
 			AuthService.logout();
 
-			notify({message: $scope.loggedOutText, position: "right", classes: "alert-success"});
+			notify({message: vm.loggedOutText, position: "right", classes: "alert-success"});
 			$state.go('home');
 		};
 
-		$scope.changeLanguage = function (key) {
+		vm.changeLanguage = function (key) {
 		    $translate.use(key);
 		};
 
-		$scope.currentLanguageIsEnglish = function() {
+		vm.currentLanguageIsEnglish = function() {
 			return $translate.use() === 'en';
 		};
 
-		$scope.currentLanguageIsGerman = function() {
+		vm.currentLanguageIsGerman = function() {
 			return $translate.use() === 'de';
 		};
 
-		$scope.currentLanguageIsCzech = function() {
+		vm.currentLanguageIsCzech = function() {
 			return $translate.use() === 'cz';
 		};
 

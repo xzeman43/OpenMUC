@@ -37,12 +37,15 @@ public class RestDeviceWrapper {
     private final DeviceState state;
     private final DriverInfo driver;
     private final List<RestChannel> channels;
+//TODO KZ check if adding this destroyed some functionality anywhere else???
+    private final List<RestChannelConfig> channelConfigs;
 
-    private RestDeviceWrapper(DeviceConfig config, DeviceState state, DriverInfo driver, List<RestChannel> channels) {
+    private RestDeviceWrapper(DeviceConfig config, DeviceState state, DriverInfo driver, List<RestChannel> channels, List<RestChannelConfig> channelConfigs) {
         this.config = config;
         this.state = state;
         this.driver = driver;
         this.channels = channels;
+        this.channelConfigs = channelConfigs;
     }
 
     public String getId() {
@@ -65,6 +68,10 @@ public class RestDeviceWrapper {
         return channels;
     }
 
+    public List<RestChannelConfig> getChannelConfigs() {
+        return channelConfigs;
+    }
+
     public static RestDeviceWrapper getDevice(DeviceConfig config, ConfigService configService, DataAccessService data) {
         String driverId = config.getDriver().getId();
         DriverInfo driver;
@@ -79,7 +86,26 @@ public class RestDeviceWrapper {
         for (ChannelConfig channelConfig : config.getChannels()) {
             channels.add(RestChannelMapper.getRestChannel(data.getChannel(channelConfig.getId())));
         }
-        return new RestDeviceWrapper(config, configService.getDeviceState(config.getId()), driver, channels);
+        return new RestDeviceWrapper(config, configService.getDeviceState(config.getId()), driver, channels, null);
+    }
+
+    public static RestDeviceWrapper getDeviceDetails(DeviceConfig config, ConfigService configService, DataAccessService data) {
+        String driverId = config.getDriver().getId();
+        DriverInfo driver;
+        try {
+            driver = configService.getDriverInfo(driverId);
+
+        } catch (DriverNotAvailableException e) {
+            driver = new DriverInfo(driverId, null, null, null, null, null);
+        }
+
+        List<RestChannel> channels = new LinkedList<RestChannel>();
+        List<RestChannelConfig> channelConfigs = new LinkedList<RestChannelConfig>();
+        for (ChannelConfig channelConfig : config.getChannels()) {
+            channels.add(RestChannelMapper.getRestChannel(data.getChannel(channelConfig.getId())));
+            channelConfigs.add(RestChannelMapper.getRestChannelConfig(channelConfig));
+        }
+        return new RestDeviceWrapper(config, configService.getDeviceState(config.getId()), driver, channels, channelConfigs);
     }
 
 }
